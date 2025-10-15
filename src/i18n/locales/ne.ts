@@ -2,17 +2,25 @@ import type { LanguageMetadata, LanguageTranslation } from '../types';
 
 export const ne: LanguageTranslation = {
     translation: {
+        editor_sidebar: {
+            new_diagram: 'नयाँ',
+            browse: 'ब्राउज',
+            tables: 'टेबलहरू',
+            refs: 'Refs',
+            areas: 'क्षेत्रहरू',
+            dependencies: 'निर्भरताहरू',
+            custom_types: 'कस्टम प्रकारहरू',
+        },
         menu: {
-            file: {
-                file: 'फाइल',
-                new: 'नयाँ',
-                open: 'खोल्नुहोस्',
+            actions: {
+                actions: 'कार्यहरू',
+                new: 'नयाँ...',
+                browse: 'ब्राउज गर्नुहोस्...',
                 save: 'सुरक्षित गर्नुहोस्',
                 import: 'डाटाबेस आयात गर्नुहोस्',
                 export_sql: 'SQL निर्यात गर्नुहोस्',
                 export_as: 'निर्यात गर्नुहोस्',
-                delete_diagram: 'डायाग्राम हटाउनुहोस्',
-                exit: 'बाहिर निस्कनुहोस्',
+                delete_diagram: 'हटाउनुहोस्',
             },
             edit: {
                 edit: 'सम्पादन',
@@ -29,6 +37,7 @@ export const ne: LanguageTranslation = {
                 hide_field_attributes: 'फिल्ड विशेषताहरू लुकाउनुहोस्',
                 show_field_attributes: 'फिल्ड विशेषताहरू देखाउनुहोस्',
                 zoom_on_scroll: 'स्क्रोलमा जुम गर्नुहोस्',
+                show_views: 'डाटाबेस भ्यूहरू',
                 theme: 'थिम',
                 show_dependencies: 'डिपेन्डेन्सीहरू देखाउनुहोस्',
                 hide_dependencies: 'डिपेन्डेन्सीहरू लुकाउनुहोस्',
@@ -66,20 +75,11 @@ export const ne: LanguageTranslation = {
         },
 
         reorder_diagram_alert: {
-            title: 'डायाग्राम पुनः क्रमबद्ध गर्नुहोस्',
+            title: 'डायाग्राम स्वचालित मिलाउनुहोस्',
             description:
                 'यो कार्य पूर्ववत गर्न सकिँदैन। यो डायाग्राम स्थायी रूपमा हटाउनेछ।',
-            reorder: 'पुनः क्रमबद्ध गर्नुहोस्',
+            reorder: 'स्वचालित मिलाउनुहोस्',
             cancel: 'रद्द गर्नुहोस्',
-        },
-
-        multiple_schemas_alert: {
-            title: 'विविध स्कीमहरू',
-            description:
-                '{{schemasCount}} डायाग्राममा स्कीमहरू। हालको रूपमा देखाइएको छ: {{formattedSchemas}}।',
-            // TODO: Translate
-            show_me: 'Show me',
-            none: 'कुनै पनि छैन',
         },
 
         copy_to_clipboard_toast: {
@@ -116,14 +116,11 @@ export const ne: LanguageTranslation = {
         copied: 'प्रतिलिपि गरियो!',
 
         side_panel: {
-            schema: 'स्कीम:',
-            filter_by_schema: 'स्कीम अनुसार फिल्टर गर्नुहोस्',
-            search_schema: 'स्कीम खोज्नुहोस्...',
-            no_schemas_found: 'कुनै स्कीमहरू फेला परेनन्',
             view_all_options: 'सबै विकल्पहरू हेर्नुहोस्',
             tables_section: {
                 tables: 'तालिकाहरू',
                 add_table: 'तालिका थप्नुहोस्',
+                add_view: 'भ्यू थप्नुहोस्',
                 filter: 'फिल्टर',
                 collapse: 'सबै लुकाउनुहोस्',
                 // TODO: Translate
@@ -149,6 +146,7 @@ export const ne: LanguageTranslation = {
                     field_actions: {
                         title: 'क्षेत्र विशेषताहरू',
                         unique: 'अनन्य',
+                        auto_increment: 'स्वचालित वृद्धि',
                         comments: 'टिप्पणीहरू',
                         no_comments: 'कुनै टिप्पणीहरू छैनन्',
                         delete_field: 'क्षेत्र हटाउनुहोस्',
@@ -164,6 +162,7 @@ export const ne: LanguageTranslation = {
                         title: 'सूचक विशेषताहरू',
                         name: 'नाम',
                         unique: 'अनन्य',
+                        index_type: 'इन्डेक्स प्रकार',
                         delete_index: 'सूचक हटाउनुहोस्',
                     },
                     table_actions: {
@@ -180,12 +179,15 @@ export const ne: LanguageTranslation = {
                     description: 'सुरु गर्नका लागि एक तालिका बनाउनुहोस्',
                 },
             },
-            relationships_section: {
-                relationships: 'सम्बन्धहरू',
+            refs_section: {
+                refs: 'Refs',
                 filter: 'फिल्टर',
-                add_relationship: 'सम्बन्ध थप्नुहोस्',
                 collapse: 'सबै लुकाउनुहोस्',
+                add_relationship: 'सम्बन्ध थप्नुहोस्',
+                relationships: 'सम्बन्धहरू',
+                dependencies: 'डिपेन्डेन्सीहरू',
                 relationship: {
+                    relationship: 'सम्बन्ध',
                     primary: 'मुख्य तालिका',
                     foreign: 'परिचित तालिका',
                     cardinality: 'कार्डिन्यालिटी',
@@ -195,16 +197,8 @@ export const ne: LanguageTranslation = {
                         delete_relationship: 'हटाउनुहोस्',
                     },
                 },
-                empty_state: {
-                    title: 'कुनै सम्बन्धहरू छैनन्',
-                    description: 'तालिकाहरू जोड्नका लागि एक सम्बन्ध बनाउनुहोस्',
-                },
-            },
-            dependencies_section: {
-                dependencies: 'डिपेन्डेन्सीहरू',
-                filter: 'फिल्टर',
-                collapse: 'सबै लुकाउनुहोस्',
                 dependency: {
+                    dependency: 'डिपेन्डेन्सी',
                     table: 'तालिका',
                     dependent_table: 'विचलित तालिका',
                     delete_dependency: 'हटाउनुहोस्',
@@ -214,9 +208,8 @@ export const ne: LanguageTranslation = {
                     },
                 },
                 empty_state: {
-                    title: 'कुनै डिपेन्डेन्सीहरू छैनन्',
-                    description:
-                        'डिपेन्डेन्सीहरू देखाउनका लागि एक व्यू बनाउनुहोस्',
+                    title: 'कुनै सम्बन्धहरू छैनन्',
+                    description: 'सुरु गर्नका लागि एक सम्बन्ध बनाउनुहोस्',
                 },
             },
 
@@ -256,6 +249,7 @@ export const ne: LanguageTranslation = {
                     enum_values: 'Enum Values',
                     composite_fields: 'Fields',
                     no_fields: 'No fields defined',
+                    no_values: 'कुनै enum मानहरू परिभाषित छैनन्',
                     field_name_placeholder: 'Field name',
                     field_type_placeholder: 'Select type',
                     add_field: 'Add Field',
@@ -278,7 +272,7 @@ export const ne: LanguageTranslation = {
             show_all: 'सबै देखाउनुहोस्',
             undo: 'पूर्ववत',
             redo: 'पुनः गर्नुहोस्',
-            reorder_diagram: 'पुनः क्रमबद्ध गर्नुहोस्',
+            reorder_diagram: 'डायाग्राम स्वचालित मिलाउनुहोस्',
             // TODO: Translate
             clear_custom_type_highlight: 'Clear highlight for "{{typeName}}"',
             custom_type_highlight_tooltip:
@@ -323,7 +317,7 @@ export const ne: LanguageTranslation = {
         },
 
         open_diagram_dialog: {
-            title: 'डायाग्राम खोल्नुहोस्',
+            title: 'डाटाबेस खोल्नुहोस्',
             description:
                 'तलको सूचीबाट खोल्नका लागि एक डायाग्राम चयन गर्नुहोस्।',
             table_columns: {
@@ -334,6 +328,12 @@ export const ne: LanguageTranslation = {
             },
             cancel: 'रद्द गर्नुहोस्',
             open: 'खोल्नुहोस्',
+
+            diagram_actions: {
+                open: 'खोल्नुहोस्',
+                duplicate: 'डुप्लिकेट',
+                delete: 'मेटाउनुहोस्',
+            },
         },
 
         export_sql_dialog: {
@@ -483,6 +483,7 @@ export const ne: LanguageTranslation = {
 
         canvas_context_menu: {
             new_table: 'नयाँ तालिका',
+            new_view: 'नयाँ भ्यू',
             new_relationship: 'नयाँ सम्बन्ध',
             // TODO: Translate
             new_area: 'New Area',
@@ -504,6 +505,9 @@ export const ne: LanguageTranslation = {
         language_select: {
             change_language: 'भाषा परिवर्तन गर्नुहोस्',
         },
+
+        on: 'सक्रिय',
+        off: 'निष्क्रिय',
     },
 };
 

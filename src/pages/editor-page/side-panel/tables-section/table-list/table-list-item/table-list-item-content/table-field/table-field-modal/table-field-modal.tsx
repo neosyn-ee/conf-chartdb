@@ -5,7 +5,10 @@ import { Button } from '@/components/button/button';
 import { Separator } from '@/components/separator/separator';
 import type { DBField } from '@/lib/domain/db-field';
 import type { FieldAttributeRange } from '@/lib/data/data-types/data-types';
-import { findDataTypeDataById } from '@/lib/data/data-types/data-types';
+import {
+    findDataTypeDataById,
+    supportsAutoIncrementDataType,
+} from '@/lib/data/data-types/data-types';
 import {
     Popover,
     PopoverContent,
@@ -26,6 +29,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/select/select';
+import { useChartDB } from '@/hooks/use-chartdb';
 
 export interface TableFieldPopoverProps {
     field: DBField;
@@ -42,6 +46,7 @@ export const TableFieldPopover: React.FC<TableFieldPopoverProps> = ({
     updateField,
     removeField,
 }) => {
+    const { readonly } = useChartDB();
     const { t } = useTranslation();
     const [localField, setLocalField] = React.useState<DBField>(field);
     const [isOpen, setIsOpen] = React.useState(false);
@@ -83,6 +88,7 @@ export const TableFieldPopover: React.FC<TableFieldPopoverProps> = ({
                 scale: localField.scale,
                 unique: localField.unique,
                 default: localField.default,
+                increment: localField.increment,
             });
         }
         prevFieldRef.current = localField;
@@ -91,6 +97,11 @@ export const TableFieldPopover: React.FC<TableFieldPopoverProps> = ({
     const dataFieldType = useMemo(
         () => findDataTypeDataById(field.type.id, databaseType),
         [field.type.id, databaseType]
+    );
+
+    const supportsAutoIncrement = useMemo(
+        () => supportsAutoIncrementDataType(field.type.name),
+        [field.type.name]
     );
 
     return (
@@ -128,7 +139,7 @@ export const TableFieldPopover: React.FC<TableFieldPopoverProps> = ({
                             </Label>
                             <Checkbox
                                 checked={localField.unique}
-                                disabled={isOnlyPrimaryKey}
+                                disabled={isOnlyPrimaryKey || readonly}
                                 onCheckedChange={(value) =>
                                     setLocalField((current) => ({
                                         ...current,
@@ -137,6 +148,30 @@ export const TableFieldPopover: React.FC<TableFieldPopoverProps> = ({
                                 }
                             />
                         </div>
+                        {supportsAutoIncrement ? (
+                            <div className="flex items-center justify-between">
+                                <Label
+                                    htmlFor="increment"
+                                    className="text-subtitle"
+                                >
+                                    {t(
+                                        'side_panel.tables_section.table.field_actions.auto_increment'
+                                    )}
+                                </Label>
+                                <Checkbox
+                                    checked={localField.increment ?? false}
+                                    disabled={
+                                        !localField.primaryKey || readonly
+                                    }
+                                    onCheckedChange={(value) =>
+                                        setLocalField((current) => ({
+                                            ...current,
+                                            increment: !!value,
+                                        }))
+                                    }
+                                />
+                            </div>
+                        ) : null}
                         <div className="flex flex-col gap-2">
                             <Label htmlFor="default" className="text-subtitle">
                                 {t(
@@ -155,6 +190,7 @@ export const TableFieldPopover: React.FC<TableFieldPopoverProps> = ({
                                     'side_panel.tables_section.table.field_actions.no_default'
                                 )}
                                 className="w-full rounded-md bg-muted text-sm"
+                                readOnly={readonly}
                             />
                         </div>
                         {dataFieldType?.fieldAttributes?.hasCharMaxLength ? (
@@ -206,6 +242,7 @@ export const TableFieldPopover: React.FC<TableFieldPopoverProps> = ({
                                                     );
                                                 }
                                             }}
+                                            disabled={readonly}
                                         >
                                             <SelectTrigger className="w-full bg-muted">
                                                 <SelectValue placeholder="Select length" />
@@ -246,6 +283,7 @@ export const TableFieldPopover: React.FC<TableFieldPopoverProps> = ({
                                                     )
                                                 }
                                                 className="w-24 rounded-md bg-muted text-sm"
+                                                readOnly={readonly}
                                             />
                                         ) : null}
                                     </div>
@@ -264,6 +302,7 @@ export const TableFieldPopover: React.FC<TableFieldPopoverProps> = ({
                                             }))
                                         }
                                         className="w-full rounded-md bg-muted text-sm"
+                                        readOnly={readonly}
                                     />
                                 )}
                             </div>
@@ -318,6 +357,7 @@ export const TableFieldPopover: React.FC<TableFieldPopoverProps> = ({
                                             }))
                                         }
                                         className="w-full rounded-md bg-muted text-sm"
+                                        readOnly={readonly}
                                     />
                                 </div>
                                 <div className="flex flex-1 flex-col gap-2">
@@ -368,6 +408,7 @@ export const TableFieldPopover: React.FC<TableFieldPopoverProps> = ({
                                             }))
                                         }
                                         className="w-full rounded-md bg-muted text-sm"
+                                        readOnly={readonly}
                                     />
                                 </div>
                             </div>
@@ -390,20 +431,25 @@ export const TableFieldPopover: React.FC<TableFieldPopoverProps> = ({
                                     'side_panel.tables_section.table.field_actions.no_comments'
                                 )}
                                 className="w-full rounded-md bg-muted text-sm"
+                                readOnly={readonly}
                             />
                         </div>
                     </div>
-                    <Separator orientation="horizontal" />
-                    <Button
-                        variant="outline"
-                        className="flex gap-2 !text-red-700"
-                        onClick={removeField}
-                    >
-                        <Trash2 className="size-3.5 text-red-700" />
-                        {t(
-                            'side_panel.tables_section.table.field_actions.delete_field'
-                        )}
-                    </Button>
+                    {!readonly ? (
+                        <>
+                            <Separator orientation="horizontal" />
+                            <Button
+                                variant="outline"
+                                className="flex gap-2 !text-red-700"
+                                onClick={removeField}
+                            >
+                                <Trash2 className="size-3.5 text-red-700" />
+                                {t(
+                                    'side_panel.tables_section.table.field_actions.delete_field'
+                                )}
+                            </Button>
+                        </>
+                    ) : null}
                 </div>
             </PopoverContent>
         </Popover>

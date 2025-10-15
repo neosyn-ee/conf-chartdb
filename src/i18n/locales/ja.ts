@@ -2,17 +2,25 @@ import type { LanguageMetadata, LanguageTranslation } from '../types';
 
 export const ja: LanguageTranslation = {
     translation: {
+        editor_sidebar: {
+            new_diagram: '新規',
+            browse: '参照',
+            tables: 'テーブル',
+            refs: '参照',
+            areas: 'エリア',
+            dependencies: '依存関係',
+            custom_types: 'カスタムタイプ',
+        },
         menu: {
-            file: {
-                file: 'ファイル',
-                new: '新規',
-                open: '開く',
+            actions: {
+                actions: 'アクション',
+                new: '新規...',
+                browse: '参照...',
                 save: '保存',
                 import: 'データベースをインポート',
                 export_sql: 'SQLをエクスポート',
                 export_as: '形式を指定してエクスポート',
-                delete_diagram: 'ダイアグラムを削除',
-                exit: '終了',
+                delete_diagram: '削除',
             },
             edit: {
                 edit: '編集',
@@ -29,6 +37,7 @@ export const ja: LanguageTranslation = {
                 hide_field_attributes: 'フィールド属性を非表示',
                 show_field_attributes: 'フィールド属性を表示',
                 zoom_on_scroll: 'スクロールでズーム',
+                show_views: 'データベースビュー',
                 theme: 'テーマ',
                 // TODO: Translate
                 show_dependencies: 'Show Dependencies',
@@ -67,20 +76,11 @@ export const ja: LanguageTranslation = {
         },
 
         reorder_diagram_alert: {
-            title: 'ダイアグラムを並べ替え',
+            title: 'ダイアグラムを自動配置',
             description:
                 'この操作によりダイアグラム内のすべてのテーブルが再配置されます。続行しますか？',
-            reorder: '並べ替え',
+            reorder: '自動配置',
             cancel: 'キャンセル',
-        },
-
-        multiple_schemas_alert: {
-            title: '複数のスキーマ',
-            description:
-                'このダイアグラムには{{schemasCount}}個のスキーマがあります。現在表示中: {{formattedSchemas}}。',
-            // TODO: Translate
-            show_me: 'Show me',
-            none: 'なし',
         },
 
         copy_to_clipboard_toast: {
@@ -119,14 +119,11 @@ export const ja: LanguageTranslation = {
         copied: 'Copied!',
 
         side_panel: {
-            schema: 'スキーマ:',
-            filter_by_schema: 'スキーマでフィルタ',
-            search_schema: 'スキーマを検索...',
-            no_schemas_found: 'スキーマが見つかりません。',
             view_all_options: 'すべてのオプションを表示...',
             tables_section: {
                 tables: 'テーブル',
                 add_table: 'テーブルを追加',
+                add_view: 'ビューを追加',
                 filter: 'フィルタ',
                 collapse: 'すべて折りたたむ',
                 // TODO: Translate
@@ -152,6 +149,7 @@ export const ja: LanguageTranslation = {
                     field_actions: {
                         title: 'フィールド属性',
                         unique: 'ユニーク',
+                        auto_increment: 'オートインクリメント',
                         comments: 'コメント',
                         no_comments: 'コメントがありません',
                         delete_field: 'フィールドを削除',
@@ -167,6 +165,7 @@ export const ja: LanguageTranslation = {
                         title: 'インデックス属性',
                         name: '名前',
                         unique: 'ユニーク',
+                        index_type: 'インデックスタイプ',
                         delete_index: 'インデックスを削除',
                     },
                     table_actions: {
@@ -183,12 +182,15 @@ export const ja: LanguageTranslation = {
                     description: 'テーブルを作成して開始してください',
                 },
             },
-            relationships_section: {
-                relationships: 'リレーションシップ',
+            refs_section: {
+                refs: '参照',
                 filter: 'フィルタ',
-                add_relationship: 'リレーションシップを追加',
                 collapse: 'すべて折りたたむ',
+                add_relationship: 'リレーションシップを追加',
+                relationships: 'リレーションシップ',
+                dependencies: '依存関係',
                 relationship: {
+                    relationship: 'リレーションシップ',
                     primary: '主テーブル',
                     foreign: '参照テーブル',
                     cardinality: 'カーディナリティ',
@@ -198,29 +200,20 @@ export const ja: LanguageTranslation = {
                         delete_relationship: '削除',
                     },
                 },
-                empty_state: {
-                    title: 'リレーションシップがありません',
-                    description:
-                        'テーブルを接続するためにリレーションシップを作成してください',
-                },
-            },
-            // TODO: Translate
-            dependencies_section: {
-                dependencies: 'Dependencies',
-                filter: 'Filter',
-                collapse: 'Collapse All',
                 dependency: {
-                    table: 'Table',
-                    dependent_table: 'Dependent View',
-                    delete_dependency: 'Delete',
+                    dependency: '依存関係',
+                    table: 'テーブル',
+                    dependent_table: '依存ビュー',
+                    delete_dependency: '削除',
                     dependency_actions: {
-                        title: 'Actions',
-                        delete_dependency: 'Delete',
+                        title: '操作',
+                        delete_dependency: '削除',
                     },
                 },
                 empty_state: {
-                    title: 'No dependencies',
-                    description: 'Create a view to get started',
+                    title: 'リレーションシップがありません',
+                    description:
+                        '開始するためにリレーションシップを作成してください',
                 },
             },
 
@@ -260,6 +253,7 @@ export const ja: LanguageTranslation = {
                     enum_values: 'Enum Values',
                     composite_fields: 'Fields',
                     no_fields: 'No fields defined',
+                    no_values: '列挙値が定義されていません',
                     field_name_placeholder: 'Field name',
                     field_type_placeholder: 'Select type',
                     add_field: 'Add Field',
@@ -282,7 +276,7 @@ export const ja: LanguageTranslation = {
             show_all: 'すべて表示',
             undo: '元に戻す',
             redo: 'やり直し',
-            reorder_diagram: 'ダイアグラムを並べ替え',
+            reorder_diagram: 'ダイアグラムを自動配置',
             // TODO: Translate
             highlight_overlapping_tables: 'Highlight Overlapping Tables',
             clear_custom_type_highlight: 'Clear highlight for "{{typeName}}"',
@@ -326,7 +320,7 @@ export const ja: LanguageTranslation = {
         },
 
         open_diagram_dialog: {
-            title: 'ダイアグラムを開く',
+            title: 'データベースを開く',
             description: '以下のリストからダイアグラムを選択してください。',
             table_columns: {
                 name: '名前',
@@ -336,6 +330,12 @@ export const ja: LanguageTranslation = {
             },
             cancel: 'キャンセル',
             open: '開く',
+
+            diagram_actions: {
+                open: '開く',
+                duplicate: '複製',
+                delete: '削除',
+            },
         },
 
         export_sql_dialog: {
@@ -485,6 +485,7 @@ export const ja: LanguageTranslation = {
 
         canvas_context_menu: {
             new_table: '新しいテーブル',
+            new_view: '新しいビュー',
             new_relationship: '新しいリレーションシップ',
             // TODO: Translate
             new_area: 'New Area',
@@ -507,6 +508,9 @@ export const ja: LanguageTranslation = {
         language_select: {
             change_language: '言語',
         },
+
+        on: 'オン',
+        off: 'オフ',
     },
 };
 

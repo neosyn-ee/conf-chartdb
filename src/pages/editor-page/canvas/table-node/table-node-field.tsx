@@ -13,13 +13,12 @@ import {
 } from '@xyflow/react';
 import { Button } from '@/components/button/button';
 import {
-    Check,
     KeyRound,
     MessageCircleMore,
     SquareDot,
     SquareMinus,
     SquarePlus,
-    Trash2,
+    Pencil,
 } from 'lucide-react';
 import { generateDBFieldSuffix, type DBField } from '@/lib/domain/db-field';
 import { useChartDB } from '@/hooks/use-chartdb';
@@ -29,10 +28,14 @@ import {
     TooltipContent,
     TooltipTrigger,
 } from '@/components/tooltip/tooltip';
-import { useClickAway, useKeyPressEvent } from 'react-use';
-import { Input } from '@/components/input/input';
 import { useDiff } from '@/context/diff-context/use-diff';
 import { useLocalConfig } from '@/hooks/use-local-config';
+import {
+    BOTTOM_SOURCE_HANDLE_ID_PREFIX,
+    TOP_SOURCE_HANDLE_ID_PREFIX,
+} from './table-node-dependency-indicator';
+import { useCanvas } from '@/hooks/use-canvas';
+import { useLayout } from '@/hooks/use-layout';
 
 export const LEFT_HANDLE_ID_PREFIX = 'left_rel_';
 export const RIGHT_HANDLE_ID_PREFIX = 'right_rel_';
@@ -74,16 +77,7 @@ const arePropsEqual = (
 
 export const TableNodeField: React.FC<TableNodeFieldProps> = React.memo(
     ({ field, focused, tableNodeId, highlighted, visible, isConnectable }) => {
-        const {
-            removeField,
-            relationships,
-            readonly,
-            updateField,
-            highlightedCustomType,
-        } = useChartDB();
-        const [editMode, setEditMode] = useState(false);
-        const [fieldName, setFieldName] = useState(field.name);
-        const inputRef = React.useRef<HTMLInputElement>(null);
+        const { relationships, readonly, highlightedCustomType } = useChartDB();
 
         const updateNodeInternals = useUpdateNodeInternals();
         const connection = useConnection();
@@ -102,6 +96,24 @@ export const TableNodeField: React.FC<TableNodeFieldProps> = React.memo(
                 tableNodeId,
             ]
         );
+        const isTargetFromView = useMemo(
+            () =>
+                connection.inProgress &&
+                connection.fromNode.id !== tableNodeId &&
+                (connection.fromHandle.id?.startsWith(
+                    TOP_SOURCE_HANDLE_ID_PREFIX
+                ) ||
+                    connection.fromHandle.id?.startsWith(
+                        BOTTOM_SOURCE_HANDLE_ID_PREFIX
+                    )),
+            [
+                connection.inProgress,
+                connection.fromNode?.id,
+                connection.fromHandle?.id,
+                tableNodeId,
+            ]
+        );
+
         const numberOfEdgesToField = useMemo(() => {
             let count = 0;
             for (const rel of relationships) {
@@ -130,42 +142,45 @@ export const TableNodeField: React.FC<TableNodeFieldProps> = React.memo(
             }
         }, [tableNodeId, updateNodeInternals, numberOfEdgesToField]);
 
-        const editFieldName = useCallback(() => {
-            if (!editMode) return;
-            if (fieldName.trim()) {
-                updateField(tableNodeId, field.id, { name: fieldName.trim() });
-            }
-            setEditMode(false);
-        }, [fieldName, field.id, updateField, editMode, tableNodeId]);
-
-        const abortEdit = useCallback(() => {
-            setEditMode(false);
-            setFieldName(field.name);
-        }, [field.name]);
-
-        useClickAway(inputRef, editFieldName);
-        useKeyPressEvent('Enter', editFieldName);
-        useKeyPressEvent('Escape', abortEdit);
-
         const {
             checkIfFieldRemoved,
             checkIfNewField,
             getFieldNewName,
             getFieldNewType,
+            getFieldNewNullable,
+            getFieldNewPrimaryKey,
+            getFieldNewCharacterMaximumLength,
+            getFieldNewPrecision,
+            getFieldNewScale,
             checkIfFieldHasChange,
+            isSummaryOnly,
         } = useDiff();
 
         const [diffState, setDiffState] = useState<{
             isDiffFieldRemoved: boolean;
             isDiffNewField: boolean;
-            fieldDiffChangedName: string | null;
-            fieldDiffChangedType: DBField['type'] | null;
+            fieldDiffChangedName: ReturnType<typeof getFieldNewName>;
+            fieldDiffChangedType: ReturnType<typeof getFieldNewType>;
+            fieldDiffChangedNullable: ReturnType<typeof getFieldNewNullable>;
+            fieldDiffChangedCharacterMaximumLength: ReturnType<
+                typeof getFieldNewCharacterMaximumLength
+            >;
+            fieldDiffChangedScale: ReturnType<typeof getFieldNewScale>;
+            fieldDiffChangedPrecision: ReturnType<typeof getFieldNewPrecision>;
+            fieldDiffChangedPrimaryKey: ReturnType<
+                typeof getFieldNewPrimaryKey
+            >;
             isDiffFieldChanged: boolean;
         }>({
             isDiffFieldRemoved: false,
             isDiffNewField: false,
             fieldDiffChangedName: null,
             fieldDiffChangedType: null,
+            fieldDiffChangedNullable: null,
+            fieldDiffChangedCharacterMaximumLength: null,
+            fieldDiffChangedScale: null,
+            fieldDiffChangedPrecision: null,
+            fieldDiffChangedPrimaryKey: null,
             isDiffFieldChanged: false,
         });
 
@@ -183,6 +198,22 @@ export const TableNodeField: React.FC<TableNodeFieldProps> = React.memo(
                     fieldDiffChangedType: getFieldNewType({
                         fieldId: field.id,
                     }),
+                    fieldDiffChangedNullable: getFieldNewNullable({
+                        fieldId: field.id,
+                    }),
+                    fieldDiffChangedPrimaryKey: getFieldNewPrimaryKey({
+                        fieldId: field.id,
+                    }),
+                    fieldDiffChangedCharacterMaximumLength:
+                        getFieldNewCharacterMaximumLength({
+                            fieldId: field.id,
+                        }),
+                    fieldDiffChangedScale: getFieldNewScale({
+                        fieldId: field.id,
+                    }),
+                    fieldDiffChangedPrecision: getFieldNewPrecision({
+                        fieldId: field.id,
+                    }),
                     isDiffFieldChanged: checkIfFieldHasChange({
                         fieldId: field.id,
                         tableId: tableNodeId,
@@ -195,7 +226,12 @@ export const TableNodeField: React.FC<TableNodeFieldProps> = React.memo(
             checkIfNewField,
             getFieldNewName,
             getFieldNewType,
+            getFieldNewPrimaryKey,
+            getFieldNewNullable,
             checkIfFieldHasChange,
+            getFieldNewCharacterMaximumLength,
+            getFieldNewPrecision,
+            getFieldNewScale,
             field.id,
             tableNodeId,
         ]);
@@ -206,18 +242,38 @@ export const TableNodeField: React.FC<TableNodeFieldProps> = React.memo(
             fieldDiffChangedName,
             fieldDiffChangedType,
             isDiffFieldChanged,
+            fieldDiffChangedNullable,
+            fieldDiffChangedPrimaryKey,
+            fieldDiffChangedCharacterMaximumLength,
+            fieldDiffChangedScale,
+            fieldDiffChangedPrecision,
         } = diffState;
-
-        const enterEditMode = useCallback((e: React.MouseEvent) => {
-            e.stopPropagation();
-            setEditMode(true);
-        }, []);
 
         const isCustomTypeHighlighted = useMemo(() => {
             if (!highlightedCustomType) return false;
             return field.type.name === highlightedCustomType.name;
         }, [highlightedCustomType, field.type.name]);
         const { showFieldAttributes } = useLocalConfig();
+
+        const { closeAllTablesInSidebar } = useLayout();
+        const { setEditTableModeTable } = useCanvas();
+        const openEditTableOnField = useCallback(() => {
+            if (readonly) {
+                return;
+            }
+
+            closeAllTablesInSidebar();
+            setEditTableModeTable({
+                tableId: tableNodeId,
+                fieldId: field.id,
+            });
+        }, [
+            setEditTableModeTable,
+            closeAllTablesInSidebar,
+            tableNodeId,
+            field.id,
+            readonly,
+        ]);
 
         return (
             <div
@@ -233,6 +289,7 @@ export const TableNodeField: React.FC<TableNodeFieldProps> = React.memo(
                         'z-0 max-h-0 overflow-hidden opacity-0': !visible,
                         'bg-sky-200 dark:bg-sky-800 hover:bg-sky-100 dark:hover:bg-sky-900 border-sky-300 dark:border-sky-700':
                             isDiffFieldChanged &&
+                            !isSummaryOnly &&
                             !isDiffFieldRemoved &&
                             !isDiffNewField,
                         'bg-red-200 dark:bg-red-800 hover:bg-red-100 dark:hover:bg-red-900 border-red-300 dark:border-red-700':
@@ -246,13 +303,13 @@ export const TableNodeField: React.FC<TableNodeFieldProps> = React.memo(
                     <>
                         <Handle
                             id={`${RIGHT_HANDLE_ID_PREFIX}${field.id}`}
-                            className={`!h-4 !w-4 !border-2 !bg-pink-600 ${!focused || readonly ? '!invisible' : ''}`}
+                            className={`!h-4 !w-4 !border-2 !bg-pink-600 ${!focused || readonly || isTargetFromView ? '!invisible' : ''}`}
                             position={Position.Right}
                             type="source"
                         />
                         <Handle
                             id={`${LEFT_HANDLE_ID_PREFIX}${field.id}`}
-                            className={`!h-4 !w-4 !border-2 !bg-pink-600 ${!focused || readonly ? '!invisible' : ''}`}
+                            className={`!h-4 !w-4 !border-2 !bg-pink-600 ${!focused || readonly || isTargetFromView ? '!invisible' : ''}`}
                             position={Position.Left}
                             type="source"
                         />
@@ -289,7 +346,6 @@ export const TableNodeField: React.FC<TableNodeFieldProps> = React.memo(
                         'flex items-center gap-1 min-w-0 flex-1 text-left',
                         {
                             'font-semibold': field.primaryKey || field.unique,
-                            'w-full': editMode,
                         }
                     )}
                 >
@@ -297,56 +353,34 @@ export const TableNodeField: React.FC<TableNodeFieldProps> = React.memo(
                         <SquareMinus className="size-3.5 text-red-800 dark:text-red-200" />
                     ) : isDiffNewField ? (
                         <SquarePlus className="size-3.5 text-green-800 dark:text-green-200" />
-                    ) : isDiffFieldChanged ? (
+                    ) : isDiffFieldChanged && !isSummaryOnly ? (
                         <SquareDot className="size-3.5 shrink-0 text-sky-800 dark:text-sky-200" />
                     ) : null}
-                    {editMode && !readonly ? (
-                        <>
-                            <Input
-                                ref={inputRef}
-                                onBlur={editFieldName}
-                                placeholder={field.name}
-                                autoFocus
-                                type="text"
-                                value={fieldName}
-                                onClick={(e) => e.stopPropagation()}
-                                onChange={(e) => setFieldName(e.target.value)}
-                                className="h-5 w-full border-[0.5px] border-blue-400 bg-slate-100 focus-visible:ring-0 dark:bg-slate-900"
-                            />
-                            <Button
-                                variant="ghost"
-                                className="size-6 p-0 text-slate-500 hover:bg-primary-foreground hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200"
-                                onClick={editFieldName}
-                            >
-                                <Check className="size-4" />
-                            </Button>
-                        </>
-                    ) : (
-                        <span
-                            className={cn('truncate min-w-0', {
-                                'text-red-800 font-normal dark:text-red-200':
-                                    isDiffFieldRemoved,
-                                'text-green-800 font-normal dark:text-green-200':
-                                    isDiffNewField,
-                                'text-sky-800 font-normal dark:text-sky-200':
-                                    isDiffFieldChanged &&
-                                    !isDiffFieldRemoved &&
-                                    !isDiffNewField,
-                            })}
-                            onDoubleClick={enterEditMode}
-                        >
-                            {fieldDiffChangedName ? (
-                                <>
-                                    {field.name}{' '}
-                                    <span className="font-medium">→</span>{' '}
-                                    {fieldDiffChangedName}
-                                </>
-                            ) : (
-                                field.name
-                            )}
-                        </span>
-                    )}
-                    {field.comments && !editMode ? (
+
+                    <span
+                        className={cn('truncate min-w-0', {
+                            'text-red-800 font-normal dark:text-red-200':
+                                isDiffFieldRemoved,
+                            'text-green-800 font-normal dark:text-green-200':
+                                isDiffNewField,
+                            'text-sky-800 font-normal dark:text-sky-200':
+                                isDiffFieldChanged &&
+                                !isSummaryOnly &&
+                                !isDiffFieldRemoved &&
+                                !isDiffNewField,
+                        })}
+                    >
+                        {fieldDiffChangedName ? (
+                            <>
+                                {fieldDiffChangedName.old}{' '}
+                                <span className="font-medium">→</span>{' '}
+                                {fieldDiffChangedName.new}
+                            </>
+                        ) : (
+                            field.name
+                        )}
+                    </span>
+                    {field.comments ? (
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <div className="shrink-0 cursor-pointer text-muted-foreground">
@@ -357,34 +391,13 @@ export const TableNodeField: React.FC<TableNodeFieldProps> = React.memo(
                         </Tooltip>
                     ) : null}
                 </div>
-                {editMode ? null : (
-                    <div className="ml-2 flex shrink-0 items-center justify-end gap-1.5">
-                        {field.primaryKey ? (
-                            <div
-                                className={cn(
-                                    'text-muted-foreground',
-                                    !readonly ? 'group-hover:hidden' : '',
-                                    isDiffFieldRemoved
-                                        ? 'text-red-800 dark:text-red-200'
-                                        : '',
-                                    isDiffNewField
-                                        ? 'text-green-800 dark:text-green-200'
-                                        : '',
-                                    isDiffFieldChanged &&
-                                        !isDiffFieldRemoved &&
-                                        !isDiffNewField
-                                        ? 'text-sky-800 dark:text-sky-200'
-                                        : ''
-                                )}
-                            >
-                                <KeyRound size={14} />
-                            </div>
-                        ) : null}
 
+                <div className="ml-2 flex shrink-0 items-center justify-end gap-1.5">
+                    {(field.primaryKey && !fieldDiffChangedPrimaryKey?.old) ||
+                    fieldDiffChangedPrimaryKey?.new ? (
                         <div
                             className={cn(
-                                'content-center text-right text-xs text-muted-foreground overflow-hidden max-w-[8rem]',
-                                field.primaryKey ? 'min-w-0' : 'min-w-[3rem]',
+                                'text-muted-foreground',
                                 !readonly ? 'group-hover:hidden' : '',
                                 isDiffFieldRemoved
                                     ? 'text-red-800 dark:text-red-200'
@@ -393,46 +406,100 @@ export const TableNodeField: React.FC<TableNodeFieldProps> = React.memo(
                                     ? 'text-green-800 dark:text-green-200'
                                     : '',
                                 isDiffFieldChanged &&
+                                    !isSummaryOnly &&
                                     !isDiffFieldRemoved &&
                                     !isDiffNewField
                                     ? 'text-sky-800 dark:text-sky-200'
                                     : ''
                             )}
                         >
-                            <span className="block truncate">
-                                {fieldDiffChangedType ? (
-                                    <>
-                                        <span className="line-through">
-                                            {field.type.name.split(' ')[0]}
-                                        </span>{' '}
+                            <KeyRound size={14} />
+                        </div>
+                    ) : null}
+
+                    <div
+                        className={cn(
+                            'content-center text-right text-xs text-muted-foreground overflow-hidden max-w-[8rem]',
+                            field.primaryKey ? 'min-w-0' : 'min-w-[3rem]',
+                            !readonly ? 'group-hover:hidden' : '',
+                            isDiffFieldRemoved
+                                ? 'text-red-800 dark:text-red-200'
+                                : '',
+                            isDiffNewField
+                                ? 'text-green-800 dark:text-green-200'
+                                : '',
+                            isDiffFieldChanged &&
+                                !isDiffFieldRemoved &&
+                                !isSummaryOnly &&
+                                !isDiffNewField
+                                ? 'text-sky-800 dark:text-sky-200'
+                                : ''
+                        )}
+                    >
+                        <span className="block truncate">
+                            {fieldDiffChangedType ? (
+                                <>
+                                    <span className="line-through">
                                         {
-                                            fieldDiffChangedType.name.split(
+                                            fieldDiffChangedType.old.name.split(
                                                 ' '
                                             )[0]
                                         }
-                                    </>
+                                    </span>{' '}
+                                    {
+                                        fieldDiffChangedType.new.name.split(
+                                            ' '
+                                        )[0]
+                                    }
+                                </>
+                            ) : (
+                                `${field.type.name.split(' ')[0]}${
+                                    showFieldAttributes
+                                        ? generateDBFieldSuffix({
+                                              ...field,
+                                              ...{
+                                                  precision:
+                                                      fieldDiffChangedPrecision?.new ??
+                                                      field.precision,
+                                                  scale:
+                                                      fieldDiffChangedScale?.new ??
+                                                      field.scale,
+                                                  characterMaximumLength:
+                                                      fieldDiffChangedCharacterMaximumLength?.new ??
+                                                      field.characterMaximumLength,
+                                              },
+                                          })
+                                        : ''
+                                }`
+                            )}
+                            {fieldDiffChangedNullable ? (
+                                fieldDiffChangedNullable.new ? (
+                                    <span className="font-semibold">?</span>
                                 ) : (
-                                    `${field.type.name.split(' ')[0]}${showFieldAttributes ? generateDBFieldSuffix(field) : ''}`
-                                )}
-                                {field.nullable ? '?' : ''}
-                            </span>
-                        </div>
-                        {readonly ? null : (
-                            <div className="hidden flex-row group-hover:flex">
-                                <Button
-                                    variant="ghost"
-                                    className="size-6 p-0 hover:bg-primary-foreground"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        removeField(tableNodeId, field.id);
-                                    }}
-                                >
-                                    <Trash2 className="size-3.5 text-red-700" />
-                                </Button>
-                            </div>
-                        )}
+                                    <span className="line-through">?</span>
+                                )
+                            ) : field.nullable ? (
+                                '?'
+                            ) : (
+                                ''
+                            )}
+                        </span>
                     </div>
-                )}
+                    {readonly ? null : (
+                        <div className="hidden flex-row group-hover:flex">
+                            <Button
+                                variant="ghost"
+                                className="size-6 p-0 hover:bg-primary-foreground"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    openEditTableOnField();
+                                }}
+                            >
+                                <Pencil className="!size-3.5 text-pink-600" />
+                            </Button>
+                        </div>
+                    )}
+                </div>
             </div>
         );
     },

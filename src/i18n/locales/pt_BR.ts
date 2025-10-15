@@ -2,17 +2,25 @@ import type { LanguageMetadata, LanguageTranslation } from '../types';
 
 export const pt_BR: LanguageTranslation = {
     translation: {
+        editor_sidebar: {
+            new_diagram: 'Novo',
+            browse: 'Navegar',
+            tables: 'Tabelas',
+            refs: 'Refs',
+            areas: 'Áreas',
+            dependencies: 'Dependências',
+            custom_types: 'Tipos Personalizados',
+        },
         menu: {
-            file: {
-                file: 'Arquivo',
-                new: 'Novo',
-                open: 'Abrir',
+            actions: {
+                actions: 'Ações',
+                new: 'Novo...',
+                browse: 'Navegar...',
                 save: 'Salvar',
                 import: 'Importar Banco de Dados',
                 export_sql: 'Exportar SQL',
                 export_as: 'Exportar como',
-                delete_diagram: 'Excluir Diagrama',
-                exit: 'Sair',
+                delete_diagram: 'Excluir',
             },
             edit: {
                 edit: 'Editar',
@@ -29,6 +37,7 @@ export const pt_BR: LanguageTranslation = {
                 hide_field_attributes: 'Ocultar Atributos de Campo',
                 show_field_attributes: 'Mostrar Atributos de Campo',
                 zoom_on_scroll: 'Zoom ao Rolar',
+                show_views: 'Visualizações do Banco de Dados',
                 theme: 'Tema',
                 show_dependencies: 'Mostrar Dependências',
                 hide_dependencies: 'Ocultar Dependências',
@@ -66,20 +75,11 @@ export const pt_BR: LanguageTranslation = {
         },
 
         reorder_diagram_alert: {
-            title: 'Reordenar Diagrama',
+            title: 'Organizar Diagrama Automaticamente',
             description:
                 'Esta ação reorganizará todas as tabelas no diagrama. Deseja continuar?',
-            reorder: 'Reordenar',
+            reorder: 'Organizar Automaticamente',
             cancel: 'Cancelar',
-        },
-
-        multiple_schemas_alert: {
-            title: 'Múltiplos Esquemas',
-            description:
-                '{{schemasCount}} esquemas neste diagrama. Atualmente exibindo: {{formattedSchemas}}.',
-            // TODO: Translate
-            show_me: 'Show me',
-            none: 'nenhum',
         },
 
         copy_to_clipboard_toast: {
@@ -116,14 +116,11 @@ export const pt_BR: LanguageTranslation = {
         copied: 'Copiado!',
 
         side_panel: {
-            schema: 'Esquema:',
-            filter_by_schema: 'Filtrar por esquema',
-            search_schema: 'Buscar esquema...',
-            no_schemas_found: 'Nenhum esquema encontrado.',
             view_all_options: 'Ver todas as Opções...',
             tables_section: {
                 tables: 'Tabelas',
                 add_table: 'Adicionar Tabela',
+                add_view: 'Adicionar Visualização',
                 filter: 'Filtrar',
                 collapse: 'Colapsar Todas',
                 // TODO: Translate
@@ -149,6 +146,7 @@ export const pt_BR: LanguageTranslation = {
                     field_actions: {
                         title: 'Atributos do Campo',
                         unique: 'Único',
+                        auto_increment: 'Incremento Automático',
                         comments: 'Comentários',
                         no_comments: 'Sem comentários',
                         delete_field: 'Excluir Campo',
@@ -164,6 +162,7 @@ export const pt_BR: LanguageTranslation = {
                         title: 'Atributos do Índice',
                         name: 'Nome',
                         unique: 'Único',
+                        index_type: 'Tipo de Índice',
                         delete_index: 'Excluir Índice',
                     },
                     table_actions: {
@@ -180,12 +179,15 @@ export const pt_BR: LanguageTranslation = {
                     description: 'Crie uma tabela para começar',
                 },
             },
-            relationships_section: {
-                relationships: 'Relacionamentos',
+            refs_section: {
+                refs: 'Refs',
                 filter: 'Filtrar',
-                add_relationship: 'Adicionar Relacionamento',
                 collapse: 'Colapsar Todas',
+                add_relationship: 'Adicionar Relacionamento',
+                relationships: 'Relacionamentos',
+                dependencies: 'Dependências',
                 relationship: {
+                    relationship: 'Relacionamento',
                     primary: 'Tabela Primária',
                     foreign: 'Tabela Referenciada',
                     cardinality: 'Cardinalidade',
@@ -195,16 +197,8 @@ export const pt_BR: LanguageTranslation = {
                         delete_relationship: 'Excluir',
                     },
                 },
-                empty_state: {
-                    title: 'Sem relacionamentos',
-                    description: 'Crie um relacionamento para conectar tabelas',
-                },
-            },
-            dependencies_section: {
-                dependencies: 'Dependências',
-                filter: 'Filtrar',
-                collapse: 'Colapsar Todas',
                 dependency: {
+                    dependency: 'Dependência',
                     table: 'Tabela',
                     dependent_table: 'Visualização Dependente',
                     delete_dependency: 'Excluir',
@@ -214,8 +208,8 @@ export const pt_BR: LanguageTranslation = {
                     },
                 },
                 empty_state: {
-                    title: 'Sem dependências',
-                    description: 'Crie uma visualização para começar',
+                    title: 'Sem relacionamentos',
+                    description: 'Crie um relacionamento para começar',
                 },
             },
 
@@ -255,6 +249,7 @@ export const pt_BR: LanguageTranslation = {
                     enum_values: 'Enum Values',
                     composite_fields: 'Fields',
                     no_fields: 'No fields defined',
+                    no_values: 'Nenhum valor de enum definido',
                     field_name_placeholder: 'Field name',
                     field_type_placeholder: 'Select type',
                     add_field: 'Add Field',
@@ -277,7 +272,7 @@ export const pt_BR: LanguageTranslation = {
             show_all: 'Mostrar Tudo',
             undo: 'Desfazer',
             redo: 'Refazer',
-            reorder_diagram: 'Reordenar Diagrama',
+            reorder_diagram: 'Organizar Diagrama Automaticamente',
             // TODO: Translate
             clear_custom_type_highlight: 'Clear highlight for "{{typeName}}"',
             custom_type_highlight_tooltip:
@@ -322,7 +317,7 @@ export const pt_BR: LanguageTranslation = {
         },
 
         open_diagram_dialog: {
-            title: 'Abrir Diagrama',
+            title: 'Abrir Banco de Dados',
             description: 'Selecione um diagrama para abrir da lista abaixo.',
             table_columns: {
                 name: 'Nome',
@@ -332,6 +327,12 @@ export const pt_BR: LanguageTranslation = {
             },
             cancel: 'Cancelar',
             open: 'Abrir',
+
+            diagram_actions: {
+                open: 'Abrir',
+                duplicate: 'Duplicar',
+                delete: 'Excluir',
+            },
         },
 
         export_sql_dialog: {
@@ -481,6 +482,7 @@ export const pt_BR: LanguageTranslation = {
 
         canvas_context_menu: {
             new_table: 'Nova Tabela',
+            new_view: 'Nova Visualização',
             new_relationship: 'Novo Relacionamento',
             // TODO: Translate
             new_area: 'New Area',
@@ -503,6 +505,9 @@ export const pt_BR: LanguageTranslation = {
         language_select: {
             change_language: 'Idioma',
         },
+
+        on: 'Ligado',
+        off: 'Desligado',
     },
 };
 
