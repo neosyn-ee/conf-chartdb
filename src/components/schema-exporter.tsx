@@ -14,12 +14,6 @@ type SchemaExporterData = Pick<
     | 'schemas'
 >;
 
-interface SchemaWithMetadata {
-    version: string;
-    exportedAt: string;
-    schema: SchemaExporterData;
-}
-
 function supportsFileSystemAccess(): boolean {
     return 'showSaveFilePicker' in window;
 }
@@ -105,17 +99,24 @@ export function SchemaExporter() {
 
         const saveSchema = async () => {
             try {
-                const writable = await fileHandle.createWritable();
-
-                const schemaWithMetadata: SchemaWithMetadata = {
-                    version: currentDiagram.updatedAt.toISOString(),
-                    exportedAt: new Date().toISOString(),
-                    schema: schemaData,
+                const diagramData = {
+                    id: currentDiagram.id,
+                    name: currentDiagram.name,
+                    databaseType: currentDiagram.databaseType,
+                    databaseEdition: currentDiagram.databaseEdition,
+                    tables: currentDiagram.tables,
+                    relationships: currentDiagram.relationships,
+                    dependencies: currentDiagram.dependencies,
+                    areas: currentDiagram.areas,
+                    customTypes: currentDiagram.customTypes,
+                    notes: currentDiagram.notes,
+                    createdAt: currentDiagram.createdAt,
+                    updatedAt: currentDiagram.updatedAt,
                 };
 
-                await writable.write(
-                    JSON.stringify(schemaWithMetadata, null, 2)
-                );
+                const writable = await fileHandle.createWritable();
+
+                await writable.write(JSON.stringify(diagramData, null, 2));
                 await writable.close();
             } catch (err) {
                 console.error(err);
@@ -124,7 +125,23 @@ export function SchemaExporter() {
 
         const timeout = setTimeout(saveSchema, 1000);
         return () => clearTimeout(timeout);
-    }, [autoSave, fileHandle, schemaData, currentDiagram.updatedAt]);
+    }, [
+        autoSave,
+        fileHandle,
+        schemaData,
+        currentDiagram.updatedAt,
+        currentDiagram.id,
+        currentDiagram.name,
+        currentDiagram.databaseType,
+        currentDiagram.databaseEdition,
+        currentDiagram.tables,
+        currentDiagram.relationships,
+        currentDiagram.dependencies,
+        currentDiagram.areas,
+        currentDiagram.customTypes,
+        currentDiagram.notes,
+        currentDiagram.createdAt,
+    ]);
 
     if (!supportsFileSystemAccess()) {
         return (
