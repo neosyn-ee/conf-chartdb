@@ -14,7 +14,8 @@
         "test:ci": "vitest run --reporter=verbose --bail=1",
         "test:ui": "vitest --ui",
         "test:coverage": "vitest --coverage",
-        "docker:start": "docker-compose -f docker-compose.yml up --build -d"
+        "docker:start": "docker-compose -f docker-compose.yml up --build -d",
+        "dev:docker": "vite --host 0.0.0.0 --port 4000"
     },
     "dependencies": {
         "@ai-sdk/openai": "^2.0.72",
