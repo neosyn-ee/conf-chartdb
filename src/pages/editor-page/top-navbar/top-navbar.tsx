@@ -1,10 +1,11 @@
-import React, { useCallback } from 'react';
-import ChartDBLogo from '@/assets/logo-light.png';
 import ChartDBDarkLogo from '@/assets/logo-dark.png';
+import ChartDBLogo from '@/assets/logo-light.png';
 import { useTheme } from '@/hooks/use-theme';
+import React, { useCallback } from 'react';
+import { SchemaExporter } from '../../../components/schema-exporter';
 import { DiagramName } from './diagram-name';
-import { LastSaved } from './last-saved';
 import { LanguageNav } from './language-nav/language-nav';
+import { LastSaved } from './last-saved';
 import { Menu } from './menu/menu';
 
 export interface TopNavbarProps {}
@@ -50,6 +51,7 @@ export const TopNavbar: React.FC<TopNavbarProps> = () => {
                 <LastSaved />
                 {renderStars()}
                 <LanguageNav />
+                <SchemaExporter />
             </div>
         </nav>
     );
