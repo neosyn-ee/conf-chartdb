@@ -48,10 +48,10 @@ export const TopNavbar: React.FC<TopNavbarProps> = () => {
             </div>
             <DiagramName />
             <div className="hidden flex-1 items-center justify-end gap-2 sm:flex">
+                <SchemaExporter />
                 <LastSaved />
                 {renderStars()}
                 <LanguageNav />
-                <SchemaExporter />
             </div>
         </nav>
     );
