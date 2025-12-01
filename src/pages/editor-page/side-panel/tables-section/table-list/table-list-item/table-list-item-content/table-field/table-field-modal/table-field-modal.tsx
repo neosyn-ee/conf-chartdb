@@ -8,6 +8,8 @@ import type { FieldAttributeRange } from '@/lib/data/data-types/data-types';
 import {
     findDataTypeDataById,
     supportsAutoIncrementDataType,
+    supportsArrayDataType,
+    autoIncrementAlwaysOn,
 } from '@/lib/data/data-types/data-types';
 import {
     Popover,
@@ -89,6 +91,7 @@ export const TableFieldPopover: React.FC<TableFieldPopoverProps> = ({
                 unique: localField.unique,
                 default: localField.default,
                 increment: localField.increment,
+                isArray: localField.isArray,
             });
         }
         prevFieldRef.current = localField;
@@ -102,6 +105,23 @@ export const TableFieldPopover: React.FC<TableFieldPopoverProps> = ({
     const supportsAutoIncrement = useMemo(
         () => supportsAutoIncrementDataType(field.type.name),
         [field.type.name]
+    );
+
+    const supportsArray = useMemo(
+        () => supportsArrayDataType(field.type.name, databaseType),
+        [field.type.name, databaseType]
+    );
+
+    // Check if this is a SERIAL-type that is inherently auto-incrementing
+    const forceAutoIncrement = useMemo(
+        () => autoIncrementAlwaysOn(field.type.name) && !localField.nullable,
+        [field.type.name, localField.nullable]
+    );
+
+    // Auto-increment is disabled if the field is nullable (auto-increment requires NOT NULL)
+    const isIncrementDisabled = useMemo(
+        () => localField.nullable || readonly || forceAutoIncrement,
+        [localField.nullable, readonly, forceAutoIncrement]
     );
 
     return (
@@ -159,14 +179,36 @@ export const TableFieldPopover: React.FC<TableFieldPopoverProps> = ({
                                     )}
                                 </Label>
                                 <Checkbox
-                                    checked={localField.increment ?? false}
-                                    disabled={
-                                        !localField.primaryKey || readonly
+                                    checked={
+                                        forceAutoIncrement
+                                            ? true
+                                            : (localField.increment ?? false)
                                     }
+                                    disabled={isIncrementDisabled}
                                     onCheckedChange={(value) =>
                                         setLocalField((current) => ({
                                             ...current,
                                             increment: !!value,
+                                        }))
+                                    }
+                                />
+                            </div>
+                        ) : null}
+                        {supportsArray ? (
+                            <div className="flex items-center justify-between">
+                                <Label
+                                    htmlFor="isArray"
+                                    className="text-subtitle"
+                                >
+                                    Array
+                                </Label>
+                                <Checkbox
+                                    checked={localField.isArray ?? false}
+                                    disabled={readonly}
+                                    onCheckedChange={(value) =>
+                                        setLocalField((current) => ({
+                                            ...current,
+                                            isArray: !!value,
                                         }))
                                     }
                                 />

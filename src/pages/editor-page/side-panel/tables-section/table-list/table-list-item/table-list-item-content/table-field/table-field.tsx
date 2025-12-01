@@ -2,7 +2,6 @@ import React from 'react';
 import { GripVertical, KeyRound } from 'lucide-react';
 import { Input } from '@/components/input/input';
 import { generateDBFieldSuffix, type DBField } from '@/lib/domain/db-field';
-import { useChartDB } from '@/hooks/use-chartdb';
 import { useUpdateTableField } from '@/hooks/use-update-table-field';
 import {
     Tooltip,
@@ -15,13 +14,16 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { SelectBox } from '@/components/select-box/select-box';
 import { TableFieldPopover } from './table-field-modal/table-field-modal';
-import type { DBTable } from '@/lib/domain';
+import type { DatabaseType, DBTable } from '@/lib/domain';
+import { requiresNotNull } from '@/lib/data/data-types/data-types';
 
 export interface TableFieldProps {
     table: DBTable;
     field: DBField;
     updateField: (attrs: Partial<DBField>) => void;
     removeField: () => void;
+    databaseType: DatabaseType;
+    readonly?: boolean;
 }
 
 export const TableField: React.FC<TableFieldProps> = ({
@@ -29,8 +31,9 @@ export const TableField: React.FC<TableFieldProps> = ({
     field,
     updateField,
     removeField,
+    databaseType,
+    readonly = false,
 }) => {
-    const { databaseType, readonly } = useChartDB();
     const { t } = useTranslation();
 
     const { attributes, listeners, setNodeRef, transform, transition } =
@@ -52,6 +55,8 @@ export const TableField: React.FC<TableFieldProps> = ({
         transform: CSS.Translate.toString(transform),
         transition,
     };
+
+    const typeRequiresNotNull = requiresNotNull(field.type.name);
 
     return (
         <div
@@ -99,7 +104,9 @@ export const TableField: React.FC<TableFieldProps> = ({
                                     'side_panel.tables_section.table.field_type'
                                 )}
                                 value={field.type.id}
-                                valueSuffix={generateDBFieldSuffix(field)}
+                                valueSuffix={generateDBFieldSuffix(field, {
+                                    databaseType,
+                                })}
                                 optionSuffix={(option) =>
                                     generateFieldSuffix(option.value)
                                 }
@@ -126,7 +133,7 @@ export const TableField: React.FC<TableFieldProps> = ({
                             <TableFieldToggle
                                 pressed={nullable}
                                 onPressedChange={handleNullableToggle}
-                                disabled={readonly}
+                                disabled={readonly || typeRequiresNotNull}
                             >
                                 N
                             </TableFieldToggle>

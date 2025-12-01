@@ -7,9 +7,9 @@ export const ar: LanguageTranslation = {
             browse: 'تصفح',
             tables: 'الجداول',
             refs: 'المراجع',
-            areas: 'المناطق',
             dependencies: 'التبعيات',
             custom_types: 'الأنواع المخصصة',
+            visuals: 'مرئيات',
         },
         menu: {
             actions: {
@@ -232,6 +232,33 @@ export const ar: LanguageTranslation = {
                 },
             },
 
+            visuals_section: {
+                visuals: 'مرئيات',
+                tabs: {
+                    areas: 'Areas',
+                    notes: 'ملاحظات',
+                },
+            },
+
+            notes_section: {
+                filter: 'تصفية',
+                add_note: 'إضافة ملاحظة',
+                no_results: 'لم يتم العثور على ملاحظات',
+                clear: 'مسح التصفية',
+                empty_state: {
+                    title: 'لا توجد ملاحظات',
+                    description: 'أنشئ ملاحظة لإضافة تعليقات نصية على اللوحة',
+                },
+                note: {
+                    empty_note: 'ملاحظة فارغة',
+                    note_actions: {
+                        title: 'إجراءات الملاحظة',
+                        edit_content: 'تحرير المحتوى',
+                        delete_note: 'حذف الملاحظة',
+                    },
+                },
+            },
+
             // TODO: Translate
             custom_types_section: {
                 custom_types: 'Custom Types',
@@ -308,7 +335,7 @@ export const ar: LanguageTranslation = {
             cancel: 'إلغاء',
             import_from_file: 'استيراد من ملف',
             back: 'رجوع',
-            empty_diagram: 'مخطط فارغ',
+            empty_diagram: 'قاعدة بيانات فارغة',
             continue: 'متابعة',
             import: 'استيراد',
         },
@@ -479,6 +506,7 @@ export const ar: LanguageTranslation = {
             new_relationship: 'علاقة جديدة',
             // TODO: Translate
             new_area: 'New Area',
+            new_note: 'ملاحظة جديدة',
         },
 
         table_node_context_menu: {

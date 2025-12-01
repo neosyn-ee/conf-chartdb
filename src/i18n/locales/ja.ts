@@ -7,9 +7,9 @@ export const ja: LanguageTranslation = {
             browse: '参照',
             tables: 'テーブル',
             refs: '参照',
-            areas: 'エリア',
             dependencies: '依存関係',
             custom_types: 'カスタムタイプ',
+            visuals: 'ビジュアル',
         },
         menu: {
             actions: {
@@ -237,6 +237,35 @@ export const ja: LanguageTranslation = {
                     description: 'Create an area to get started',
                 },
             },
+
+            visuals_section: {
+                visuals: 'ビジュアル',
+                tabs: {
+                    areas: 'Areas',
+                    notes: 'ノート',
+                },
+            },
+
+            notes_section: {
+                filter: 'フィルター',
+                add_note: 'ノートを追加',
+                no_results: 'ノートが見つかりません',
+                clear: 'フィルターをクリア',
+                empty_state: {
+                    title: 'ノートがありません',
+                    description:
+                        'キャンバス上にテキスト注釈を追加するためのノートを作成',
+                },
+                note: {
+                    empty_note: '空のノート',
+                    note_actions: {
+                        title: 'ノートアクション',
+                        edit_content: 'コンテンツを編集',
+                        delete_note: 'ノートを削除',
+                    },
+                },
+            },
+
             // TODO: Translate
             custom_types_section: {
                 custom_types: 'Custom Types',
@@ -314,7 +343,7 @@ export const ja: LanguageTranslation = {
             back: '戻る',
             // TODO: Translate
             import_from_file: 'Import from File',
-            empty_diagram: '空のダイアグラム',
+            empty_diagram: '空のデータベース',
             continue: '続行',
             import: 'インポート',
         },
@@ -489,6 +518,7 @@ export const ja: LanguageTranslation = {
             new_relationship: '新しいリレーションシップ',
             // TODO: Translate
             new_area: 'New Area',
+            new_note: '新しいメモ',
         },
 
         table_node_context_menu: {

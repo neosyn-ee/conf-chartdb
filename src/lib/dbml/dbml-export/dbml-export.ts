@@ -583,6 +583,155 @@ const fixMultilineTableNames = (dbml: string): string => {
     );
 };
 
+// Restore increment attribute for auto-incrementing fields
+const restoreIncrementAttribute = (dbml: string, tables: DBTable[]): string => {
+    if (!tables || tables.length === 0) return dbml;
+
+    let result = dbml;
+
+    tables.forEach((table) => {
+        // Find fields with increment=true
+        const incrementFields = table.fields.filter((f) => f.increment);
+
+        incrementFields.forEach((field) => {
+            // Build the table identifier pattern
+            const tableIdentifier = table.schema
+                ? `"${table.schema.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"\\."${table.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`
+                : `"${table.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`;
+
+            // Escape field name for regex
+            const escapedFieldName = field.name.replace(
+                /[.*+?^${}()|[\]\\]/g,
+                '\\$&'
+            );
+
+            // Pattern to match the field line with existing attributes in brackets
+            // Matches: "field_name" type [existing, attributes]
+            const fieldPattern = new RegExp(
+                `(Table ${tableIdentifier} \\{[^}]*?^\\s*"${escapedFieldName}"[^\\[\\n]+)(\\[[^\\]]*\\])`,
+                'gms'
+            );
+
+            result = result.replace(
+                fieldPattern,
+                (match, fieldPart, brackets) => {
+                    // Check if increment already exists
+                    if (brackets.includes('increment')) {
+                        return match;
+                    }
+
+                    // Add increment to the attributes
+                    const newBrackets = brackets.replace(']', ', increment]');
+                    return fieldPart + newBrackets;
+                }
+            );
+        });
+    });
+
+    return result;
+};
+
+// Restore table and field notes/comments that may have been lost during DBML export
+// This handles databases where @dbml/core doesn't recognize the comment syntax
+// (e.g., MySQL's inline COMMENT syntax). For databases like PostgreSQL where
+// notes are already preserved, this function detects existing notes and skips them.
+const restoreNotes = (dbml: string, tables: DBTable[]): string => {
+    if (!tables || tables.length === 0) return dbml;
+
+    let result = dbml;
+
+    // Helper function to escape comments for DBML
+    const escapeComment = (comment: string): string => {
+        return comment
+            .replace(/\r?\n/g, ' ') // Replace newlines with spaces
+            .replace(/\s+/g, ' ') // Normalize multiple spaces
+            .trim() // Remove leading/trailing whitespace
+            .replace(/\\/g, '\\\\')
+            .replace(/'/g, "\\'")
+            .replace(/"/g, '\\"');
+    };
+
+    tables.forEach((table) => {
+        // Build the table identifier pattern once for this table
+        const tableIdentifier = table.schema
+            ? `"${table.schema.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"\\."${table.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`
+            : `"${table.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`;
+
+        // Restore table-level notes
+        if (table.comments) {
+            const escapedComment = escapeComment(table.comments);
+
+            // Pattern to match the entire table block
+            const tableBlockPattern = new RegExp(
+                `(Table ${tableIdentifier} \\{)([\\s\\S]*?)(^\\})`,
+                'gm'
+            );
+
+            result = result.replace(
+                tableBlockPattern,
+                (match, tableStart, tableContent, tableEnd) => {
+                    // Check if a Note already exists ANYWHERE in this table
+                    if (/^\s*Note:\s*'/m.test(tableContent)) {
+                        // Note already exists, don't add another one
+                        return match;
+                    }
+
+                    // Add the Note at the end, before the closing brace (like PostgreSQL)
+                    return `${tableStart}${tableContent}\n  Note: '${escapedComment}'\n${tableEnd}`;
+                }
+            );
+        }
+
+        // Restore field-level notes
+        const fieldsWithComments = table.fields.filter((f) => f.comments);
+
+        fieldsWithComments.forEach((field) => {
+            // Escape field name for regex
+            const escapedFieldName = field.name.replace(
+                /[.*+?^${}()|[\]\\]/g,
+                '\\$&'
+            );
+
+            // Escape the comment text for use in the replacement
+            const escapedComment = escapeComment(field.comments!);
+
+            // Pattern to match the field line
+            // We need to match the complete field definition including array types
+            // Format: "field_name" type_with_size_and_arrays [attributes]
+            // Examples: "id" bigint [pk], "items" text[] [not null], "name" varchar(100) [unique]
+            const fieldPattern = new RegExp(
+                `(Table ${tableIdentifier} \\{[^}]*?^\\s*"${escapedFieldName}"\\s+\\S+(?:\\([^)]*\\))?(?:\\[\\])?)(\\s*\\[[^\\]]*\\])?`,
+                'gms'
+            );
+
+            result = result.replace(
+                fieldPattern,
+                (match, fieldPart, brackets) => {
+                    // Check if note already exists
+                    if (brackets && brackets.includes('note:')) {
+                        return match;
+                    }
+
+                    // Add note to the attributes
+                    if (brackets) {
+                        // If brackets exist, add note to them
+                        const newBrackets = brackets.replace(
+                            ']',
+                            `, note: '${escapedComment}']`
+                        );
+                        return fieldPart + newBrackets;
+                    } else {
+                        // If no brackets, create new ones with note
+                        return fieldPart + ` [note: '${escapedComment}']`;
+                    }
+                }
+            );
+        });
+    });
+
+    return result;
+};
+
 // Restore composite primary key names in the DBML
 const restoreCompositePKNames = (dbml: string, tables: DBTable[]): string => {
     if (!tables || tables.length === 0) return dbml;
@@ -759,31 +908,37 @@ export function generateDBMLFromDiagram(diagram: Diagram): DBMLExportResult {
             };
         }) ?? [];
 
-    // Remove duplicate tables (consider both schema and table name)
+    // Filter out empty tables and duplicates in a single pass for performance
     const seenTableIdentifiers = new Set<string>();
-    const uniqueTables = sanitizedTables.filter((table) => {
+    const tablesWithFields = sanitizedTables.filter((table) => {
+        // Skip tables with no fields (empty tables cause DBML export to fail)
+        if (table.fields.length === 0) {
+            return false;
+        }
+
         // Create a unique identifier combining schema and table name
         const tableIdentifier = table.schema
             ? `${table.schema}.${table.name}`
             : table.name;
 
+        // Skip duplicate tables
         if (seenTableIdentifiers.has(tableIdentifier)) {
-            return false; // Skip duplicate
+            return false;
         }
         seenTableIdentifiers.add(tableIdentifier);
-        return true; // Keep unique table
+        return true; // Keep unique, non-empty table
     });
 
     // Create the base filtered diagram structure
     const filteredDiagram: Diagram = {
         ...diagram,
-        tables: uniqueTables,
+        tables: tablesWithFields,
         relationships:
             diagram.relationships?.filter((rel) => {
-                const sourceTable = uniqueTables.find(
+                const sourceTable = tablesWithFields.find(
                     (t) => t.id === rel.sourceTableId
                 );
-                const targetTable = uniqueTables.find(
+                const targetTable = tablesWithFields.find(
                     (t) => t.id === rel.targetTableId
                 );
                 const sourceFieldExists = sourceTable?.fields.some(
@@ -883,10 +1038,16 @@ export function generateDBMLFromDiagram(diagram: Diagram): DBMLExportResult {
         );
 
         // Restore schema information that may have been stripped by DBML importer
-        standard = restoreTableSchemas(standard, uniqueTables);
+        standard = restoreTableSchemas(standard, tablesWithFields);
 
         // Restore composite primary key names
-        standard = restoreCompositePKNames(standard, uniqueTables);
+        standard = restoreCompositePKNames(standard, tablesWithFields);
+
+        // Restore increment attribute for auto-incrementing fields
+        standard = restoreIncrementAttribute(standard, tablesWithFields);
+
+        // Restore table and field notes/comments that may have been lost during DBML export
+        standard = restoreNotes(standard, tablesWithFields);
 
         // Prepend Enum DBML to the standard output
         if (enumsDBML) {
