@@ -1,0 +1,5071 @@
+{
+  "id": "jj8z3o4i9aep",
+  "name": "confitech",
+  "databaseType": "postgresql",
+  "tables": [
+    {
+      "id": "0lty6wt90e2qrrs8todtfrmbi",
+      "name": "alarm_template",
+      "schema": "public",
+      "x": 5612,
+      "y": 100,
+      "fields": [
+        {
+          "id": "838ylmnklee6406hqzus55lf8",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "q3xl3vt1knm1tf23l07bqu2mf",
+          "name": "prametereTemplateId",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "p72f4kiakoz8mbeyp5r72iwee",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "hi06wxhd1ufk07la60azcmikh",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "c4dub3w4o5bcltcyeshmrxfet",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "ba82awei9wurir6b9yvisrg1i",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 28,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "2dj3o4pbwi4hth56xj0or4a7k",
+      "name": "alarm_rule",
+      "schema": "public",
+      "x": 3492,
+      "y": 100,
+      "fields": [
+        {
+          "id": "0lzo06lh0rspvx1gc2no1igok",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": true,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "vwlbi7v7sn92oicq827p7rqkb",
+          "name": "machine_parameter_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "nvz4weovcw7sp1xknmazr3qqe",
+          "name": "alarm_template_aggregation_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "v4jp1ay4ojztwwzrv0etzy3q4",
+          "name": "threshold_min",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "t4g4tea5stbpcgu3go9txc3nt",
+          "name": "threshold_max",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "ldn7nlydj6q5l4bsgviz05dy8",
+          "name": "severity",
+          "type": {
+            "id": "alarm_severity",
+            "name": "alarm_severity"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "l29cyig2q7fjbg0xykiocsp3c",
+          "name": "notification_template_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "74d36ro032yqqretme5wwvznf",
+          "name": "is_active",
+          "type": {
+            "id": "boolean",
+            "name": "boolean"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "TRUE"
+        },
+        {
+          "id": "d5znxixhhht1yzn18roy2lwug",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "'(now())'"
+        },
+        {
+          "id": "i666pfyyiys6r9ywu0yk6tb4r",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "'(now())'"
+        },
+        {
+          "id": "xhbruz1c2zzg6hsabumxqz34m",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 21,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "37bjtx048zlg6k4ih0ad1wqss",
+      "name": "alarm_template_aggregation",
+      "schema": "public",
+      "x": 5188,
+      "y": 100,
+      "fields": [
+        {
+          "id": "qgbxjd4amkguws0noa5ulr5g6",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": true,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "0p79xg9tumtrj0grafegi9i0o",
+          "name": "temaplate_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "157fc7qr24nuk78ho8ytc6kz6",
+          "name": "parameter_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "kfdktsy8d5xh9u23x5wkforxc",
+          "name": "threshold_min",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "ytxkkcm1x2omlmsigspy0jpli",
+          "name": "threshold_max",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "6tirh290whqssa4e8goqkeg9t",
+          "name": "severity",
+          "type": {
+            "id": "alarm_severity",
+            "name": "alarm_severity"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "9s7z5pazcidiu90i1x8i3xy5v",
+          "name": "notification_template_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "1gfq2gk94w8mp1d56m3a7sbug",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "'(now())'"
+        },
+        {
+          "id": "20434q1i3ebg2soyvljvufgh6",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "'(now())'"
+        },
+        {
+          "id": "0ns681nocb1wdurwz8pz6cxoi",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 16,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "58lhnndmna3ckuj48wur6dfgd",
+      "name": "role",
+      "schema": "public",
+      "x": 5092.67261889578,
+      "y": 703.378895822635,
+      "fields": [
+        {
+          "id": "tkk1ojsxpfldkjnsc58kkuiip",
+          "name": "value",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "1w18bpuokncvdacvpv63mmwe6",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "luzqo6ecpv0y8lqywvqxjpxbd",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "twau4bc6m4xz5zst9u9poyhor",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "skjx9jsgooebg62umy92po3im",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 14,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "5boirtdmxa9ovh4735xwagtqv",
+      "name": "parameter_template_aggregation",
+      "schema": "public",
+      "x": 4764,
+      "y": 100,
+      "fields": [
+        {
+          "id": "rdy17b281didhdy7couz2n9sd",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "i0fia8nzsp8hgkjpgvjwgxvo0",
+          "name": "templateId",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "dx6g6xvaszk2ljd5jdlp53lbc",
+          "name": "parameterId",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "2bow4dcgdt1yl3ty6o6wkoy4y",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "j2xljh6ycdcijhce2jrke34fc",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "fjr5bch2hr0e82wrzofzvxvr5",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 19,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "5hju4f7t54doxz3ds9g2l0rm3",
+      "name": "maintenance_plan",
+      "schema": "public",
+      "x": 2220,
+      "y": 100,
+      "fields": [
+        {
+          "id": "fqqew4jqwpqn99uhz6fjcpc99",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "hvzx8yohqumf4k73twhz0ta11",
+          "name": "template_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "c8fifskogpliodfev6t0negx5",
+          "name": "machine_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "1zuwg93ota4fgdg5bqed6sj85",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "p49q0erl4ohbe5fv6g5rrrtxc",
+          "name": "next_due_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "o7mo9kwddrpzjtpoecfjzgpsq",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "b3jdp27o0qqmqx1ipfa99wvi1",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "3casv4klpi5kq5bbr8ewn4nud",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 30,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "5tuetunhaqsthixdcad7r0x2w",
+      "name": "company",
+      "schema": "public",
+      "x": 524,
+      "y": 100,
+      "fields": [
+        {
+          "id": "9iah8mr1op6pno13wtoo8ib10",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "ituga144adimqa1ejl2ilux8y",
+          "name": "tenant_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "a84i78ash18vajgwry94emjf4",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "h6qkbpcro6jx3n5twzmtjlh9j",
+          "name": "email",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "2sem9kzk8ayiofrcix62wts5v",
+          "name": "phone",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "caj8qef78hdr74xjkjstyymaa",
+          "name": "address",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "1oze9pl0jhgh0kulpqt0sxct9",
+          "name": "city",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "zhpb9aprer1jnoa0890cqe1yu",
+          "name": "province",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "2qmldlexz5cg86p2ivacdugb2",
+          "name": "postal_code",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "41ybvz40y7z1abstc26c6bhc8",
+          "name": "vat_number",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "tuzveskd7c6046qd4xwdhibvu",
+          "name": "sdi_code",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "bj6tek6i7e6bdq7flobybnrj8",
+          "name": "parentCompanyId",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "w1n41kg409iquh5d6g4e8jy3j",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "2vegmuecok04u8v1trl4uk6a8",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "xmgoe0s7ppjwi2yntynbko09j",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 17,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "614ixblb2t9wt3bmrkri5kt31",
+      "name": "subscription_plan",
+      "schema": "public",
+      "x": 458.4048778859139,
+      "y": 608.4158876058666,
+      "fields": [
+        {
+          "id": "95shgg98zcp3buhp43e3phfbs",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": true,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "7qaywblct70z6yolh88prb3yh",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "x7hb88ir0kvzlwa1zh7n0h0uy",
+          "name": "type",
+          "type": {
+            "id": "subscription_type",
+            "name": "subscription_type"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "w84rk9qzd7z7u904lufg5ieyd",
+          "name": "start_time",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "'(now())'"
+        },
+        {
+          "id": "r8l13ker6fyvthr54p2m8f2zi",
+          "name": "end_time",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "alahp3xjnf7cg23qesxjs5qq0",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "'(now())'"
+        },
+        {
+          "id": "r7w5sx8c3ujmciytndff83cqo",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "'(now())'"
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 13,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "6va2td4rlrnv70reoqagf6n4d",
+      "name": "plant",
+      "schema": "public",
+      "x": 3429,
+      "y": 1232.8498704663034,
+      "fields": [
+        {
+          "id": "tlzhyn9mw27tjv8u4ruqlmyow",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "skevwssoyuo9vcb5bg2kpy819",
+          "name": "company_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "rfbabmzv1vd5i3pt7qqfafee0",
+          "name": "tenant_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "br0b0ec77jzsuugu69d7za9vc",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "xxyvps7c8aq25qlc0w4v4ck8g",
+          "name": "location",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "5rbnh7ncgv6v8fu8e2mwwrmsv",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "wvo0wxg6229n54g6yks2zc8um",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "g70vjg0urzcdbgjkw1214sy7n",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "692ikt1efwjsp8hahq1dmcbff",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 8,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "6wcz4c9ouwrl5g8b7dz8fi9fn",
+      "name": "component",
+      "schema": "public",
+      "x": 7001,
+      "y": 893.2792698665459,
+      "fields": [
+        {
+          "id": "tiry3qvb2ay1u6v7bn99kkshi",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "117rgszpgxq44aejll9rmk2tr",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "at5m38mf2ady6y1zu834rzcq4",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "vzkchi569gznkwojxbdohj2ed",
+          "name": "part_number",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "7lc8ktfelvy54xsj5151k6hub",
+          "name": "maintenance_interval_cycles",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "zkqkm2kclfihzey9bomh51wfo",
+          "name": "maintenance_interval_hours",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "e1lp7s1d3731h7b50sr9w4xk8",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "zsklifppbj9465axrywxbhfig",
+          "name": "update_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 31,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "9l388nhv9o0skaz52l2jfwq2j",
+      "name": "maintenance_attachment",
+      "schema": "public",
+      "x": 1372,
+      "y": 100,
+      "fields": [
+        {
+          "id": "6dkvtc1m74qhqzmp7njwaxdrh",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "3ob5wtx62hu61yds03dlgfzkv",
+          "name": "task_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "0q0valf21wombw5h82y8gzsil",
+          "name": "document_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "cazbbmamyjbtgsr8h2i9w55ht",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "ni23k7zk3ogzqk4ughpgdnzbl",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "aey0utc5vhpnqr61x4k40dzjc",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 4,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "a7rqj4yr83dgou0cz7d5ct4et",
+      "name": "component_template_aggregation",
+      "schema": "public",
+      "x": 7213,
+      "y": 489.7114317029974,
+      "fields": [
+        {
+          "id": "h98gpma60rngp7v74k1hd27ix",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "9asast1mqrl24h8jctxem1ev9",
+          "name": "component_template_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "v5qfmr1o8d7tqxly74ywss0e5",
+          "name": "component_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "cmdb19xmhzkflrrignkc00ugw",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "vshhmx9704rhktvc19w50tdu6",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "jbkbh3dorby23ae3y8bfxzixc",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 32,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "c2byse995na4czpvga22dgsum",
+      "name": "user",
+      "schema": "public",
+      "x": 4244.67261889578,
+      "y": 703.378895822635,
+      "fields": [
+        {
+          "id": "iwoailnarulug2yy8g63xjmz9",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": true,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "qog7ebum0jx7eqkdk33jxvhan",
+          "name": "tenant_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "lx39si6x6m85703bqtd0ts71c",
+          "name": "company_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "ozuaiky7bo89qqz9hb6r5yz2v",
+          "name": "email",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "suslp6m53dtqkmpuvgf14d7na",
+          "name": "password_hash",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "2np50fi5a471ovx4rq2q174jt",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "2lipf3qt1l1t5k94j84cqg34o",
+          "name": "surname",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "qutp0t58lsufb5vdeadbq24mf",
+          "name": "status",
+          "type": {
+            "id": "user_status",
+            "name": "user_status"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "'active'"
+        },
+        {
+          "id": "cnjyf1cn1uxzc4z0exxofdpao",
+          "name": "is_first_login",
+          "type": {
+            "id": "boolean",
+            "name": "boolean"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "TRUE"
+        },
+        {
+          "id": "zsllvso0p0pbl5zayue46uqg4",
+          "name": "last_login_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "hz1h9iux59qzkoym3c26evk8h",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "'(now())'"
+        },
+        {
+          "id": "26evbc6sy5m62jdg1fy1gjxr0",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "'(now())'"
+        },
+        {
+          "id": "3tlzyxfhwak760452zvnyvpv6",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [
+        {
+          "id": "l8ht9bxa3q348shl2snkp7z2y",
+          "name": "user_user_email_key",
+          "unique": true,
+          "fieldIds": [
+            "ozuaiky7bo89qqz9hb6r5yz2v"
+          ],
+          "createdAt": 1764611672896
+        }
+      ],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 29,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "c8vjnkg43hz71h8w01wk4qhds",
+      "name": "production_line",
+      "schema": "public",
+      "x": 3005,
+      "y": 572.8498704663034,
+      "fields": [
+        {
+          "id": "7u9vzpmfkqq4yczl3uaq3xfp7",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "pliwcqs8fo68vjzag295pc2b6",
+          "name": "plant_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "i9g8ewh0j5ovx4hrdmb3u599h",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "i4guolhuju9czunuyyzav8ric",
+          "name": "code",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "5yv4k9npnaofk094ft9fr3wet",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "vgu753v71grranukso61c2ivn",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "f4kw7ajbb5o4plq2fin779lsp",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "ddugylmdsd90enm14hb2se4yz",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 20,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "c999mdczi60ttat4t618ubjyb",
+      "name": "parameter_definition",
+      "schema": "public",
+      "x": 4340,
+      "y": 100,
+      "fields": [
+        {
+          "id": "lb2xfs4m9gwgxr4qjlatnqc7z",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "7fs7swa66mvagkmuxy9v02657",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "4fj9fwpfz8l2w131mh1x46ki4",
+          "name": "code",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "038m57le4yjd4veyybj5sg4yv",
+          "name": "data_type",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "iqzn62xfuuwaz9tzjexlott8p",
+          "name": "unit",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "7x964brg3ngumesgc46jruu62",
+          "name": "tag_name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "kfdgmfvk7rnvpodkxdtly28x3",
+          "name": "server_name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "cz8mqnt6l99youyuhs3l5eh2z",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "ibfzbvmc8eoaebi73ukdoj5iw",
+          "name": "address",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "9m0l0584i10601ygab33cqdkx",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "a4f7d61a6uncvpqpwajky6rmy",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "gylacpeetbak5j6a6kaarn9vq",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        }
+      ],
+      "indexes": [
+        {
+          "id": "8enx4n9gphs78w4olddqdo0ps",
+          "name": "parameter_definition_parameter_definition_code_key",
+          "unique": true,
+          "fieldIds": [
+            "4fj9fwpfz8l2w131mh1x46ki4"
+          ],
+          "createdAt": 1764611672895
+        }
+      ],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 0,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "jfmbvzxktorwoctd5oexd6oeg",
+      "name": "machine_family",
+      "schema": "public",
+      "x": 6460,
+      "y": 100,
+      "fields": [
+        {
+          "id": "sxhhy2f75a80t7rbj5epqoo5u",
+          "name": "value",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "vw1vycbsae3tvl8msnexkxusa",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "r19kkfm3rzcexbltxvtrszag7",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "e4icn0iuie81svob37jm1gu5l",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "afeapqluir23wnt42e93v1jvb",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 2,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "jx50rxvgu8vok3dgis53jvg5j",
+      "name": "tenant_theme",
+      "schema": "public",
+      "x": 5.651124002522721,
+      "y": 632.3106400512756,
+      "fields": [
+        {
+          "id": "x1amv2ji21g2vq75lwlv7b7me",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "5boknxreszjinl9c9y6g2y35h",
+          "name": "logotypeUrl",
+          "type": {
+            "id": "json",
+            "name": "json"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "7179pmj1yt5bnhtawcs56210k",
+          "name": "primaryColor",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "z6obn8shchmq4f5vjytzxldci",
+          "name": "secondaryColor",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "6s26n8y0m8qlieewr0hupj5rp",
+          "name": "tertiaryColor",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "f84s2tn9rqy91n9zl2z0m73pk",
+          "name": "imageCover",
+          "type": {
+            "id": "json",
+            "name": "json"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "gidg5kuxm1txzrdtkb1imhha1",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "'(now())'"
+        },
+        {
+          "id": "dkiiur78qhfqds8cmszldvzny",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "'(now())'"
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 22,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "l2xlkf8gbsbkg65pbbfn0c7pi",
+      "name": "machine_component_template",
+      "schema": "public",
+      "x": 7308,
+      "y": 100,
+      "fields": [
+        {
+          "id": "ad6cy4nha83aw0adneh96my2q",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "fcoe7skoqc301xntpwljw77pm",
+          "name": "machine_template_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "h7gouaw5w5vsag1ba9oe28je2",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "no5ccfh2np6gd6o5zdird9c2e",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "qjqvlzfrupt5xfna6hvmc6h6z",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "dmygl9u0zbp4yzlwzn77ccv52",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "r00nkmkk83qw3h7pgrbv2cim0",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 27,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "l5lsoxt26a5bsej1uj2bjjv0w",
+      "name": "maintenance_task",
+      "schema": "public",
+      "x": 1796,
+      "y": 100,
+      "fields": [
+        {
+          "id": "eu5uwxc792y8pqtoz4heius52",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": true,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "32wcwkzdqta9ab3cqba9r7yqy",
+          "name": "plan_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "3j0ji669drqkqad0ciay8miba",
+          "name": "status",
+          "type": {
+            "id": "maintenance_status",
+            "name": "maintenance_status"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "'scheduled'"
+        },
+        {
+          "id": "zhe4boriltckplo4uchtfp2o4",
+          "name": "due_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "nfy90x2gpqug5teqhv55gvvr2",
+          "name": "started_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "4douomaua9s8cub5s5xho2z6m",
+          "name": "completed_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "o64ly4icpfc6qhberxc8qkabd",
+          "name": "notes",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "j507awo5ejnrqulx4j5m4ofc9",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "'(now())'"
+        },
+        {
+          "id": "jb87q9lc073c6k53cjx0fhfd4",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "'(now())'"
+        },
+        {
+          "id": "nayv0xpydatosgfcx32z3jasz",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 11,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "lw8l10dz8nvwct4tr7vuuxfa4",
+      "name": "parameter_template",
+      "schema": "public",
+      "x": 6036,
+      "y": 100,
+      "fields": [
+        {
+          "id": "rw3dn5786v82s5vyrkmvv6uy9",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "fsgm211c205qns38f9mhj8wrv",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "2l5uiw3ct0vbm7fag4onl8m1j",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "s8nh1teero54bu6x6sq5o9bdz",
+          "name": "machineFamilyId",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "z90ubho1nfdg30uehsdqak7ol",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "jvwig7se14zpdiq4uko0tm0hp",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "no1jf4p50jbgjaqmacp1cux8k",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 6,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "o989jh0zwj9n4o84i4jqfsoe1",
+      "name": "notification_template",
+      "schema": "public",
+      "x": 3396.6726188957805,
+      "y": 703.378895822635,
+      "fields": [
+        {
+          "id": "b3lkuyym22kr54scbertv6ia0",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": true,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "vmfhwos7lzzml380d6q4p9cah",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "h4581eo6lacmvbe9mskm1lucm",
+          "name": "channel",
+          "type": {
+            "id": "notification_channel",
+            "name": "notification_channel"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "u9qukximweg9js3fr3j2x8yc0",
+          "name": "subject",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "dbjx0mq1m49uqalh3drgfxu4g",
+          "name": "body",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "ac1j8t205sfhk3ukkkpgdvrz3",
+          "name": "is_active",
+          "type": {
+            "id": "boolean",
+            "name": "boolean"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "TRUE"
+        },
+        {
+          "id": "d241ke4bq2w3jihuzlcyq52ep",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "'(now())'"
+        },
+        {
+          "id": "8ruojs958hubyors3vd30622a",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "'(now())'"
+        },
+        {
+          "id": "7v7qcxa2jdi11plkj4tm2aom0",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 9,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "pi9zkzzy3kasofu8o5fj4bbef",
+      "name": "machine",
+      "schema": "public",
+      "x": 2644,
+      "y": 100,
+      "fields": [
+        {
+          "id": "4tcj1k2ryfn6kn34hj30xz9b3",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": true,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "69zbngqer7k5jvh1whfvegxtp",
+          "name": "production_line_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "bgrjz6zb4gdkd3p51ei907gm7",
+          "name": "template_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "fh5jmd3fc6lofdgggmphfd7k9",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "ztyo8zlfk9gk6ni2esg5nxr7y",
+          "name": "serial_number",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "pk7cea9qmgyylejxzvdmb8mek",
+          "name": "status",
+          "type": {
+            "id": "machine_status",
+            "name": "machine_status"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "'active'"
+        },
+        {
+          "id": "x4nv8a230j06v7bm1t5t5bgxr",
+          "name": "ip_address",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "rvb91i2u5h1s7va7a747tmbq3",
+          "name": "mqtt_topic",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "ck6z4cljtksb35curiy2b7a0g",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "'(now())'"
+        },
+        {
+          "id": "woq3lgry0s07hgsb3sxt41kx6",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "'(now())'"
+        },
+        {
+          "id": "bg3hfj0rbuchorkxgmvrwtz2u",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 23,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "puje49bclk5zrdeuonc3tncqz",
+      "name": "alarm_event",
+      "schema": "public",
+      "x": 3068,
+      "y": 100,
+      "fields": [
+        {
+          "id": "qzlfpyvz563yw2loolly2nlx6",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "xyv1nc23qgjak5345t51aewky",
+          "name": "alarm_rule_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "jjpht7xhxs89qe5giynm1jiga",
+          "name": "machine_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "0qzmfeqir89ciebr95jvzltej",
+          "name": "parameter_value",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "wn4d9hlulhdz6wh129hf74osw",
+          "name": "occurred_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "'(now())'"
+        },
+        {
+          "id": "j1prfzy8jauqe5s48h6sbbyzt",
+          "name": "resolved_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "swf1xsa66agscnw01dnqy1rcs",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 5,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "pwr75ps8xf1oyz3283kdrjywk",
+      "name": "document",
+      "schema": "public",
+      "x": 948,
+      "y": 100,
+      "fields": [
+        {
+          "id": "79zfoy515jbd6u5qbjow84wjx",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": true,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "k73mascn5if71vq85cixw8lyp",
+          "name": "tenant_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "rdjsoav3v1wgnif3de54zexw5",
+          "name": "company_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "vj2v8iamkjb27wwp2yyriimzk",
+          "name": "type",
+          "type": {
+            "id": "document_type",
+            "name": "document_type"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "zn7brx41ipzk8sbu6sdeb0v5w",
+          "name": "title",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "2ayxvri9d4nnu9q81eld0vmfe",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "11nr075bbf5u5bgcir94kftg3",
+          "name": "bucket_key",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "ksqax308ee45o2c2fesxuu7z9",
+          "name": "tags",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "tznojjyzgoxc7d87zy0ku7dju",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "'(now())'"
+        },
+        {
+          "id": "j2w1dxlodbne5n05t2sxgbqwq",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "'(now())'"
+        },
+        {
+          "id": "as0f2331cmvsfv1840eaazb1r",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 7,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "qcqef57amrfc4n7v269hoqpwa",
+      "name": "permission",
+      "schema": "public",
+      "x": 5516.67261889578,
+      "y": 703.378895822635,
+      "fields": [
+        {
+          "id": "kp40pdtd7ut1lzpmqdsjo1120",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": true,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "2y8mjelzfm3anow58oyrp6sgh",
+          "name": "role_value",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "ly72x6lnncv0sgacr4q6i2usq",
+          "name": "resource",
+          "type": {
+            "id": "permission_resource",
+            "name": "permission_resource"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "1ow07e6myrq7x6jhpwjiy949k",
+          "name": "action",
+          "type": {
+            "id": "permission_action",
+            "name": "permission_action"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "ifejaw8xjc91yivrv9svx92z7",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "'(now())'"
+        },
+        {
+          "id": "x6tynkqcioegxz0x5v6rjepz5",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "'(now())'"
+        },
+        {
+          "id": "bjlzlcw7ygttr9me8l6lltrcl",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 18,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "qtfi6o6gqtuh5r1s8fe0efl3f",
+      "name": "user_role_map",
+      "schema": "public",
+      "x": 4668.67261889578,
+      "y": 703.378895822635,
+      "fields": [
+        {
+          "id": "iyrjpayta0ujy3oct827agb7e",
+          "name": "user_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "d544uq16srlvb6owy2wsifs1b",
+          "name": "role_value",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "b5pqlopkn6u8wbo89nhy07agl",
+          "name": "assigned_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "1ps4yy9lcheu7rx8mp49grnb3",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 24,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "qtk6ve8yfmn09tp19yvm1xfx3",
+      "name": "machine_template",
+      "schema": "public",
+      "x": 6884,
+      "y": 100,
+      "fields": [
+        {
+          "id": "ew3u3yda7bv113ac2q7a2gaxn",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "7gwrzlkyfcuuha6l00cba658n",
+          "name": "familyId",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "3fjfk21uorpmxi2m4tm7lghkt",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "8fe8z1ug473lmbn3mlgyteac8",
+          "name": "model",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "j96pou4sf7s2szs4rqdikkdm7",
+          "name": "vendor",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "apkvjq8c0bmszkde5samnuaxs",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "cse0ynujhammkmyqg4mjvt3b0",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "oct224sz8uys6g6ldqpfjt169",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "clk4tyvoy24kmlbpsqsfhj93y",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 25,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "sgpqh7w8zb6quhmalgw6juitg",
+      "name": "tenant",
+      "schema": "public",
+      "x": 100,
+      "y": 100,
+      "fields": [
+        {
+          "id": "73rf3w0vf5kpwktm842tmljau",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": true,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "4kdqzhxm5ovxfqnneb9tie5ff",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "emo34zrpml1ni76mkzs5n374y",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "rztdz2cbpw2y0jsxvmnsvaqp6",
+          "name": "logo_url",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "wvz2i6opqmzbs9cyvqipfj4yd",
+          "name": "themeId",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "p5qb1oiugm5qdp6vtguc7ozew",
+          "name": "status",
+          "type": {
+            "id": "tenant_status",
+            "name": "tenant_status"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "'active'"
+        },
+        {
+          "id": "talhba0qr11m0q0tplccp4ymr",
+          "name": "parentTenantId",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "yhz5s3lth9tckkv021bsecg7y",
+          "name": "subscription",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "411ue1vcf8pbzmsdktunvy3yc",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "'(now())'"
+        },
+        {
+          "id": "2zx7qfwjahebyml16p8w8p5bl",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "'(now())'"
+        },
+        {
+          "id": "5wbplyqt1fqjbpghtqpk3n9og",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 3,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "suauhbcgal1ol7ok9wkv8lbzz",
+      "name": "notification_event",
+      "schema": "public",
+      "x": 3820.6726188957805,
+      "y": 703.378895822635,
+      "fields": [
+        {
+          "id": "4ff883klfn2lhexsy12brqysb",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "3s12b5pw4r5lhoma4b1jsk4bf",
+          "name": "template_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "jq3bd2wasr8zbdy8p4oxwt12n",
+          "name": "recipient_user_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "5t5gtgr5wpbxhzrw2sujmucyu",
+          "name": "context",
+          "type": {
+            "id": "json",
+            "name": "json"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "7hez3ptzgv75opuinbbejnev1",
+          "name": "sent_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "mucxjm1p6zu18m6ll01ipkruf",
+          "name": "status",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "4xy4wuxyekeodtas3a46ybpvu",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "r1yexvf6097qj4ec34f6x6nwi",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 12,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "uerrt2525t60cvuzucg2cqlr0",
+      "name": "machine_parameter",
+      "schema": "public",
+      "x": 3916,
+      "y": 100,
+      "fields": [
+        {
+          "id": "k3dk1jtg1u003ftfdmh1h2gcs",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "fodrspxrcft01n8lrok8ahyr2",
+          "name": "machine_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "57b6ibdmnms8skfawmroicmof",
+          "name": "parameter_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        },
+        {
+          "id": "9ivdsy4r7x0xnxrl4ie6yjhya",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "rz25nmt23n5s8sa3xerooe1r1",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "ds2mzuilvv3kztuwarpt79ros",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672896,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672896,
+      "order": 26,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "v5awne1zrmnyldarzw1mjvmik",
+      "name": "maintenance_template",
+      "schema": "public",
+      "x": 7637,
+      "y": 489.7114317029974,
+      "fields": [
+        {
+          "id": "919wg868z5ef7osaa3j123h4i",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "2rn2jza3n4qh2k6dqsz581crj",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "7vnkmj258epgptmd3sc7yfv4g",
+          "name": "component_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "22rty5va4lj6yuk8qhbk4r1be",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "71syeb2rxhbpw4j6ucinr0dav",
+          "name": "schedule_cron",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "ppccl9vextpoh2qpixrox2aqg",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "82vy6rplfnq3lak5m9gzs7pvt",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "y5sxvj8fdmv4vmlwbdv6fzv69",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 1,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "wnogndpdiavqn932g486o68pn",
+      "name": "machine_component_aggregation",
+      "schema": "public",
+      "x": 7732,
+      "y": 100,
+      "fields": [
+        {
+          "id": "gmdjky9fn0qz54dbdwu35jxif",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "fftevbtjf7y0hejavugaypbrg",
+          "name": "machine_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "yhelogfi25w4fzv8rn9fwxzz1",
+          "name": "component_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "ho8qo91q31o1kj5kisfrremam",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "jdvcd65f3zko61n5corm72269",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        {
+          "id": "901vbqqgn5mh7bkrccw6idxx3",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 10,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "yu4r2p8dw9lui2djmef9i2x1l",
+      "name": "video_metadata",
+      "schema": "public",
+      "x": 948,
+      "y": 614,
+      "fields": [
+        {
+          "id": "nlo91ko56meng7fkom7z5sci7",
+          "name": "id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": true,
+          "unique": false,
+          "nullable": false,
+          "increment": true,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "y7kcqo6wv8fjpy0883jucq33e",
+          "name": "document_id",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "g760qtgbf98yobwl4hutn7e4m",
+          "name": "resolution",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "4mga7ykxho2yito588i3c7hfr",
+          "name": "duration_seconds",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": true,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        },
+        {
+          "id": "9hlk5vjaeabijytdb87b6f89g",
+          "name": "created_at",
+          "type": {
+            "id": "timestamp",
+            "name": "timestamp"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": "'(now())'"
+        },
+        {
+          "id": "ujsdqc9wfl4pftfabnzp529s8",
+          "name": "created_by",
+          "type": {
+            "id": "integer",
+            "name": "integer"
+          },
+          "primaryKey": false,
+          "unique": false,
+          "nullable": false,
+          "increment": false,
+          "createdAt": 1764611672895,
+          "default": ""
+        }
+      ],
+      "indexes": [],
+      "color": "#8eb7ff",
+      "isView": false,
+      "createdAt": 1764611672895,
+      "order": 15,
+      "diagramId": "jj8z3o4i9aep"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "94rhzlf9ntpyvcnb603701unb",
+      "name": "fk_alarm_event_alarm_rule_id_alarm_rule_id",
+      "sourceSchema": "public",
+      "sourceTableId": "puje49bclk5zrdeuonc3tncqz",
+      "targetSchema": "public",
+      "targetTableId": "2dj3o4pbwi4hth56xj0or4a7k",
+      "sourceFieldId": "xyv1nc23qgjak5345t51aewky",
+      "targetFieldId": "0lzo06lh0rspvx1gc2no1igok",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "xjj47d6osm8s6sf75ey0544dk",
+      "name": "fk_alarm_event_machine_id_machine_id",
+      "sourceSchema": "public",
+      "sourceTableId": "puje49bclk5zrdeuonc3tncqz",
+      "targetSchema": "public",
+      "targetTableId": "pi9zkzzy3kasofu8o5fj4bbef",
+      "sourceFieldId": "jjpht7xhxs89qe5giynm1jiga",
+      "targetFieldId": "4tcj1k2ryfn6kn34hj30xz9b3",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "sitjr9ll6x02959sjn3atrsyy",
+      "name": "fk_alarm_rule_machine_parameter_id_machine_parameter_id",
+      "sourceSchema": "public",
+      "sourceTableId": "2dj3o4pbwi4hth56xj0or4a7k",
+      "targetSchema": "public",
+      "targetTableId": "uerrt2525t60cvuzucg2cqlr0",
+      "sourceFieldId": "vwlbi7v7sn92oicq827p7rqkb",
+      "targetFieldId": "k3dk1jtg1u003ftfdmh1h2gcs",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "v8683jaqlp2r6cpb0alkuq56e",
+      "name": "fk_alarm_rule_notification_template_id_notification_template",
+      "sourceSchema": "public",
+      "sourceTableId": "2dj3o4pbwi4hth56xj0or4a7k",
+      "targetSchema": "public",
+      "targetTableId": "o989jh0zwj9n4o84i4jqfsoe1",
+      "sourceFieldId": "l29cyig2q7fjbg0xykiocsp3c",
+      "targetFieldId": "b3lkuyym22kr54scbertv6ia0",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "5tlfnil8l2wl07ybw5kg5sr4y",
+      "name": "fk_alarm_template_aggregation_parameter_id_parameter_templat",
+      "sourceSchema": "public",
+      "sourceTableId": "37bjtx048zlg6k4ih0ad1wqss",
+      "targetSchema": "public",
+      "targetTableId": "5boirtdmxa9ovh4735xwagtqv",
+      "sourceFieldId": "157fc7qr24nuk78ho8ytc6kz6",
+      "targetFieldId": "rdy17b281didhdy7couz2n9sd",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "yb6rnu8fmg7lioacq5jzl2dbf",
+      "name": "fk_alarm_template_aggregation_temaplate_id_alarm_template_id",
+      "sourceSchema": "public",
+      "sourceTableId": "37bjtx048zlg6k4ih0ad1wqss",
+      "targetSchema": "public",
+      "targetTableId": "0lty6wt90e2qrrs8todtfrmbi",
+      "sourceFieldId": "0p79xg9tumtrj0grafegi9i0o",
+      "targetFieldId": "838ylmnklee6406hqzus55lf8",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "jxlj7ipgevsjfdj310iganpvf",
+      "name": "fk_alarm_template_prametereTemplateId_parameter_template_id",
+      "sourceSchema": "public",
+      "sourceTableId": "0lty6wt90e2qrrs8todtfrmbi",
+      "targetSchema": "public",
+      "targetTableId": "lw8l10dz8nvwct4tr7vuuxfa4",
+      "sourceFieldId": "q3xl3vt1knm1tf23l07bqu2mf",
+      "targetFieldId": "rw3dn5786v82s5vyrkmvv6uy9",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "al8uv0viu6ymwlmxyvw8oaos8",
+      "name": "fk_company_parentCompanyId_company_id",
+      "sourceSchema": "public",
+      "sourceTableId": "5tuetunhaqsthixdcad7r0x2w",
+      "targetSchema": "public",
+      "targetTableId": "5tuetunhaqsthixdcad7r0x2w",
+      "sourceFieldId": "bj6tek6i7e6bdq7flobybnrj8",
+      "targetFieldId": "9iah8mr1op6pno13wtoo8ib10",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "b4b6d5agzq1hxyoxhuci96zwf",
+      "name": "fk_company_tenant_id_tenant_id",
+      "sourceSchema": "public",
+      "sourceTableId": "5tuetunhaqsthixdcad7r0x2w",
+      "targetSchema": "public",
+      "targetTableId": "sgpqh7w8zb6quhmalgw6juitg",
+      "sourceFieldId": "ituga144adimqa1ejl2ilux8y",
+      "targetFieldId": "73rf3w0vf5kpwktm842tmljau",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "cnwtggimp0vs8plepamolof5d",
+      "name": "fk_component_template_aggregation_component_id_component_id",
+      "sourceSchema": "public",
+      "sourceTableId": "a7rqj4yr83dgou0cz7d5ct4et",
+      "targetSchema": "public",
+      "targetTableId": "6wcz4c9ouwrl5g8b7dz8fi9fn",
+      "sourceFieldId": "v5qfmr1o8d7tqxly74ywss0e5",
+      "targetFieldId": "tiry3qvb2ay1u6v7bn99kkshi",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672897,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "q5jtbl4a76uuehflcnd7pbkdv",
+      "name": "fk_document_company_id_company_id",
+      "sourceSchema": "public",
+      "sourceTableId": "pwr75ps8xf1oyz3283kdrjywk",
+      "targetSchema": "public",
+      "targetTableId": "5tuetunhaqsthixdcad7r0x2w",
+      "sourceFieldId": "rdjsoav3v1wgnif3de54zexw5",
+      "targetFieldId": "9iah8mr1op6pno13wtoo8ib10",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "dili119rcb1z18htaygb0on6k",
+      "name": "fk_document_tenant_id_tenant_id",
+      "sourceSchema": "public",
+      "sourceTableId": "pwr75ps8xf1oyz3283kdrjywk",
+      "targetSchema": "public",
+      "targetTableId": "sgpqh7w8zb6quhmalgw6juitg",
+      "sourceFieldId": "k73mascn5if71vq85cixw8lyp",
+      "targetFieldId": "73rf3w0vf5kpwktm842tmljau",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "78bnjjnenss39yfpsxo8jopgl",
+      "name": "fk_machine_component_template_id_component_template_aggregat",
+      "sourceSchema": "public",
+      "sourceTableId": "l2xlkf8gbsbkg65pbbfn0c7pi",
+      "targetSchema": "public",
+      "targetTableId": "a7rqj4yr83dgou0cz7d5ct4et",
+      "sourceFieldId": "ad6cy4nha83aw0adneh96my2q",
+      "targetFieldId": "9asast1mqrl24h8jctxem1ev9",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "6qogsfkpmr10yrpxu4tbc8w54",
+      "name": "fk_machine_component_template_id_machine_component_aggregati",
+      "sourceSchema": "public",
+      "sourceTableId": "l2xlkf8gbsbkg65pbbfn0c7pi",
+      "targetSchema": "public",
+      "targetTableId": "wnogndpdiavqn932g486o68pn",
+      "sourceFieldId": "ad6cy4nha83aw0adneh96my2q",
+      "targetFieldId": "yhelogfi25w4fzv8rn9fwxzz1",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "vpwxz0cydxv1od843oeo9c5wd",
+      "name": "fk_machine_component_template_machine_template_id_machine_te",
+      "sourceSchema": "public",
+      "sourceTableId": "l2xlkf8gbsbkg65pbbfn0c7pi",
+      "targetSchema": "public",
+      "targetTableId": "qtk6ve8yfmn09tp19yvm1xfx3",
+      "sourceFieldId": "fcoe7skoqc301xntpwljw77pm",
+      "targetFieldId": "ew3u3yda7bv113ac2q7a2gaxn",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672897,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "s25naibsqh2ic1dw3def6w6hq",
+      "name": "fk_machine_id_machine_component_aggregation_machine_id",
+      "sourceSchema": "public",
+      "sourceTableId": "pi9zkzzy3kasofu8o5fj4bbef",
+      "targetSchema": "public",
+      "targetTableId": "wnogndpdiavqn932g486o68pn",
+      "sourceFieldId": "4tcj1k2ryfn6kn34hj30xz9b3",
+      "targetFieldId": "fftevbtjf7y0hejavugaypbrg",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "wnuksd7rbj71e3y1w61noa185",
+      "name": "fk_machine_parameter_machine_id_machine_id",
+      "sourceSchema": "public",
+      "sourceTableId": "uerrt2525t60cvuzucg2cqlr0",
+      "targetSchema": "public",
+      "targetTableId": "pi9zkzzy3kasofu8o5fj4bbef",
+      "sourceFieldId": "fodrspxrcft01n8lrok8ahyr2",
+      "targetFieldId": "4tcj1k2ryfn6kn34hj30xz9b3",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "64ml11tki1lpsvdzvluktegs4",
+      "name": "fk_machine_parameter_parameter_id_parameter_definition_id",
+      "sourceSchema": "public",
+      "sourceTableId": "uerrt2525t60cvuzucg2cqlr0",
+      "targetSchema": "public",
+      "targetTableId": "c999mdczi60ttat4t618ubjyb",
+      "sourceFieldId": "57b6ibdmnms8skfawmroicmof",
+      "targetFieldId": "lb2xfs4m9gwgxr4qjlatnqc7z",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "cbnw6at0g84ciq1n6c7tjgqgz",
+      "name": "fk_machine_production_line_id_production_line_id",
+      "sourceSchema": "public",
+      "sourceTableId": "pi9zkzzy3kasofu8o5fj4bbef",
+      "targetSchema": "public",
+      "targetTableId": "c8vjnkg43hz71h8w01wk4qhds",
+      "sourceFieldId": "69zbngqer7k5jvh1whfvegxtp",
+      "targetFieldId": "7u9vzpmfkqq4yczl3uaq3xfp7",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "8xph2fjatz4ic3vfh0wlye5zx",
+      "name": "fk_machine_template_familyId_machine_family_value",
+      "sourceSchema": "public",
+      "sourceTableId": "qtk6ve8yfmn09tp19yvm1xfx3",
+      "targetSchema": "public",
+      "targetTableId": "jfmbvzxktorwoctd5oexd6oeg",
+      "sourceFieldId": "7gwrzlkyfcuuha6l00cba658n",
+      "targetFieldId": "sxhhy2f75a80t7rbj5epqoo5u",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "23djczegkld5odlzpmp0xdzpv",
+      "name": "fk_machine_template_id_machine_template_id",
+      "sourceSchema": "public",
+      "sourceTableId": "pi9zkzzy3kasofu8o5fj4bbef",
+      "targetSchema": "public",
+      "targetTableId": "qtk6ve8yfmn09tp19yvm1xfx3",
+      "sourceFieldId": "bgrjz6zb4gdkd3p51ei907gm7",
+      "targetFieldId": "ew3u3yda7bv113ac2q7a2gaxn",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "ic9gzepmzbetzu54gr8baulrb",
+      "name": "fk_maintenance_attachment_document_id_document_id",
+      "sourceSchema": "public",
+      "sourceTableId": "9l388nhv9o0skaz52l2jfwq2j",
+      "targetSchema": "public",
+      "targetTableId": "pwr75ps8xf1oyz3283kdrjywk",
+      "sourceFieldId": "0q0valf21wombw5h82y8gzsil",
+      "targetFieldId": "79zfoy515jbd6u5qbjow84wjx",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "bdiu0i29yp169rra9a61aqvr3",
+      "name": "fk_maintenance_attachment_task_id_maintenance_task_id",
+      "sourceSchema": "public",
+      "sourceTableId": "9l388nhv9o0skaz52l2jfwq2j",
+      "targetSchema": "public",
+      "targetTableId": "l5lsoxt26a5bsej1uj2bjjv0w",
+      "sourceFieldId": "3ob5wtx62hu61yds03dlgfzkv",
+      "targetFieldId": "eu5uwxc792y8pqtoz4heius52",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "bzfguno6gvon8selq4yl7go15",
+      "name": "fk_maintenance_plan_machine_id_machine_id",
+      "sourceSchema": "public",
+      "sourceTableId": "5hju4f7t54doxz3ds9g2l0rm3",
+      "targetSchema": "public",
+      "targetTableId": "pi9zkzzy3kasofu8o5fj4bbef",
+      "sourceFieldId": "c8fifskogpliodfev6t0negx5",
+      "targetFieldId": "4tcj1k2ryfn6kn34hj30xz9b3",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "muez09x6en0qqzht9ze654a45",
+      "name": "fk_maintenance_plan_template_id_maintenance_template_id",
+      "sourceSchema": "public",
+      "sourceTableId": "5hju4f7t54doxz3ds9g2l0rm3",
+      "targetSchema": "public",
+      "targetTableId": "v5awne1zrmnyldarzw1mjvmik",
+      "sourceFieldId": "hvzx8yohqumf4k73twhz0ta11",
+      "targetFieldId": "919wg868z5ef7osaa3j123h4i",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "srsqaxuy7cbcfea0hpifugilm",
+      "name": "fk_maintenance_task_plan_id_maintenance_plan_id",
+      "sourceSchema": "public",
+      "sourceTableId": "l5lsoxt26a5bsej1uj2bjjv0w",
+      "targetSchema": "public",
+      "targetTableId": "5hju4f7t54doxz3ds9g2l0rm3",
+      "sourceFieldId": "32wcwkzdqta9ab3cqba9r7yqy",
+      "targetFieldId": "fqqew4jqwpqn99uhz6fjcpc99",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "wsc2fdpx4qmdpbhp1hn2jjzvs",
+      "name": "fk_maintenance_template_component_id_component_template_aggr",
+      "sourceSchema": "public",
+      "sourceTableId": "v5awne1zrmnyldarzw1mjvmik",
+      "targetSchema": "public",
+      "targetTableId": "a7rqj4yr83dgou0cz7d5ct4et",
+      "sourceFieldId": "7vnkmj258epgptmd3sc7yfv4g",
+      "targetFieldId": "h98gpma60rngp7v74k1hd27ix",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672897,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "xay4p2be4elyhh5t2ypwgzu7s",
+      "name": "fk_notification_event_recipient_user_id_user_id",
+      "sourceSchema": "public",
+      "sourceTableId": "suauhbcgal1ol7ok9wkv8lbzz",
+      "targetSchema": "public",
+      "targetTableId": "c2byse995na4czpvga22dgsum",
+      "sourceFieldId": "jq3bd2wasr8zbdy8p4oxwt12n",
+      "targetFieldId": "iwoailnarulug2yy8g63xjmz9",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "5f0wkew5nkfazrtfbzqm1vluw",
+      "name": "fk_notification_event_template_id_notification_template_id",
+      "sourceSchema": "public",
+      "sourceTableId": "suauhbcgal1ol7ok9wkv8lbzz",
+      "targetSchema": "public",
+      "targetTableId": "o989jh0zwj9n4o84i4jqfsoe1",
+      "sourceFieldId": "3s12b5pw4r5lhoma4b1jsk4bf",
+      "targetFieldId": "b3lkuyym22kr54scbertv6ia0",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "7wc1hrypo11prgn6ju7uw6qv7",
+      "name": "fk_parameter_template_aggregation_parameterId_parameter_defi",
+      "sourceSchema": "public",
+      "sourceTableId": "5boirtdmxa9ovh4735xwagtqv",
+      "targetSchema": "public",
+      "targetTableId": "c999mdczi60ttat4t618ubjyb",
+      "sourceFieldId": "dx6g6xvaszk2ljd5jdlp53lbc",
+      "targetFieldId": "lb2xfs4m9gwgxr4qjlatnqc7z",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "8qbf7e31yytc3qmvh8pcy9oc5",
+      "name": "fk_parameter_template_aggregation_templateId_parameter_templ",
+      "sourceSchema": "public",
+      "sourceTableId": "5boirtdmxa9ovh4735xwagtqv",
+      "targetSchema": "public",
+      "targetTableId": "lw8l10dz8nvwct4tr7vuuxfa4",
+      "sourceFieldId": "i0fia8nzsp8hgkjpgvjwgxvo0",
+      "targetFieldId": "rw3dn5786v82s5vyrkmvv6uy9",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "gtv7i56hgsrnvrebx9dd58ph1",
+      "name": "fk_parameter_template_machineFamilyId_machine_family_value",
+      "sourceSchema": "public",
+      "sourceTableId": "lw8l10dz8nvwct4tr7vuuxfa4",
+      "targetSchema": "public",
+      "targetTableId": "jfmbvzxktorwoctd5oexd6oeg",
+      "sourceFieldId": "s8nh1teero54bu6x6sq5o9bdz",
+      "targetFieldId": "sxhhy2f75a80t7rbj5epqoo5u",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "25zo8tz9bn14j9nsqa3amc13o",
+      "name": "fk_permission_role_value_role_value",
+      "sourceSchema": "public",
+      "sourceTableId": "qcqef57amrfc4n7v269hoqpwa",
+      "targetSchema": "public",
+      "targetTableId": "58lhnndmna3ckuj48wur6dfgd",
+      "sourceFieldId": "2y8mjelzfm3anow58oyrp6sgh",
+      "targetFieldId": "tkk1ojsxpfldkjnsc58kkuiip",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "0h40ahux0iy6mco1j4oucfa6y",
+      "name": "fk_plant_company_id_company_id",
+      "sourceSchema": "public",
+      "sourceTableId": "6va2td4rlrnv70reoqagf6n4d",
+      "targetSchema": "public",
+      "targetTableId": "5tuetunhaqsthixdcad7r0x2w",
+      "sourceFieldId": "skevwssoyuo9vcb5bg2kpy819",
+      "targetFieldId": "9iah8mr1op6pno13wtoo8ib10",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "ljmaggfoimnxa8htgvgc4j5sk",
+      "name": "fk_plant_tenant_id_tenant_id",
+      "sourceSchema": "public",
+      "sourceTableId": "6va2td4rlrnv70reoqagf6n4d",
+      "targetSchema": "public",
+      "targetTableId": "sgpqh7w8zb6quhmalgw6juitg",
+      "sourceFieldId": "rfbabmzv1vd5i3pt7qqfafee0",
+      "targetFieldId": "73rf3w0vf5kpwktm842tmljau",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "t0r4j9qzvxlw69jwt7dllf7dv",
+      "name": "fk_production_line_plant_id_plant_id",
+      "sourceSchema": "public",
+      "sourceTableId": "c8vjnkg43hz71h8w01wk4qhds",
+      "targetSchema": "public",
+      "targetTableId": "6va2td4rlrnv70reoqagf6n4d",
+      "sourceFieldId": "pliwcqs8fo68vjzag295pc2b6",
+      "targetFieldId": "tlzhyn9mw27tjv8u4ruqlmyow",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "j4iijoxd4bakhp2d5ec929cfn",
+      "name": "fk_tenant_parentTenantId_tenant_id",
+      "sourceSchema": "public",
+      "sourceTableId": "sgpqh7w8zb6quhmalgw6juitg",
+      "targetSchema": "public",
+      "targetTableId": "sgpqh7w8zb6quhmalgw6juitg",
+      "sourceFieldId": "talhba0qr11m0q0tplccp4ymr",
+      "targetFieldId": "73rf3w0vf5kpwktm842tmljau",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "u1utul2g1dg96ru06avwizw1n",
+      "name": "fk_tenant_subscription_subscription_plan_id",
+      "sourceSchema": "public",
+      "sourceTableId": "sgpqh7w8zb6quhmalgw6juitg",
+      "targetSchema": "public",
+      "targetTableId": "614ixblb2t9wt3bmrkri5kt31",
+      "sourceFieldId": "yhz5s3lth9tckkv021bsecg7y",
+      "targetFieldId": "95shgg98zcp3buhp43e3phfbs",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "9d2e2lrvnny3cxuxbmr8s170q",
+      "name": "fk_tenant_themeId_tenant_theme_id",
+      "sourceSchema": "public",
+      "sourceTableId": "sgpqh7w8zb6quhmalgw6juitg",
+      "targetSchema": "public",
+      "targetTableId": "jx50rxvgu8vok3dgis53jvg5j",
+      "sourceFieldId": "wvz2i6opqmzbs9cyvqipfj4yd",
+      "targetFieldId": "x1amv2ji21g2vq75lwlv7b7me",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "a6bnbp2d4rzuxt56jsoiabu0n",
+      "name": "fk_user_company_id_company_id",
+      "sourceSchema": "public",
+      "sourceTableId": "c2byse995na4czpvga22dgsum",
+      "targetSchema": "public",
+      "targetTableId": "5tuetunhaqsthixdcad7r0x2w",
+      "sourceFieldId": "lx39si6x6m85703bqtd0ts71c",
+      "targetFieldId": "9iah8mr1op6pno13wtoo8ib10",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "chnh7ynr6ams03j6uh2h8nzcc",
+      "name": "fk_user_role_map_role_value_role_value",
+      "sourceSchema": "public",
+      "sourceTableId": "qtfi6o6gqtuh5r1s8fe0efl3f",
+      "targetSchema": "public",
+      "targetTableId": "58lhnndmna3ckuj48wur6dfgd",
+      "sourceFieldId": "d544uq16srlvb6owy2wsifs1b",
+      "targetFieldId": "tkk1ojsxpfldkjnsc58kkuiip",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "ogqi9hbpvllg45rjqxlcce781",
+      "name": "fk_user_role_map_user_id_user_id",
+      "sourceSchema": "public",
+      "sourceTableId": "qtfi6o6gqtuh5r1s8fe0efl3f",
+      "targetSchema": "public",
+      "targetTableId": "c2byse995na4czpvga22dgsum",
+      "sourceFieldId": "iyrjpayta0ujy3oct827agb7e",
+      "targetFieldId": "iwoailnarulug2yy8g63xjmz9",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "kdzy8ubgua59qv815iinjr13e",
+      "name": "fk_user_tenant_id_tenant_id",
+      "sourceSchema": "public",
+      "sourceTableId": "c2byse995na4czpvga22dgsum",
+      "targetSchema": "public",
+      "targetTableId": "sgpqh7w8zb6quhmalgw6juitg",
+      "sourceFieldId": "qog7ebum0jx7eqkdk33jxvhan",
+      "targetFieldId": "73rf3w0vf5kpwktm842tmljau",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "r28778klb4gujh03a5ao85xlj",
+      "name": "fk_video_metadata_document_id_document_id",
+      "sourceSchema": "public",
+      "sourceTableId": "yu4r2p8dw9lui2djmef9i2x1l",
+      "targetSchema": "public",
+      "targetTableId": "pwr75ps8xf1oyz3283kdrjywk",
+      "sourceFieldId": "y7kcqo6wv8fjpy0883jucq33e",
+      "targetFieldId": "79zfoy515jbd6u5qbjow84wjx",
+      "sourceCardinality": "many",
+      "targetCardinality": "one",
+      "createdAt": 1764611672896,
+      "diagramId": "jj8z3o4i9aep"
+    }
+  ],
+  "dependencies": [],
+  "areas": [],
+  "customTypes": [
+    {
+      "id": "iswtc3hg0m4twa6c97knezpzt",
+      "schema": "public",
+      "name": "alarm_severity",
+      "kind": "enum",
+      "values": [
+        "info",
+        "warning",
+        "critical"
+      ],
+      "order": 0,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "er96vasviuoan55ccm266bcnf",
+      "schema": "public",
+      "name": "document_type",
+      "kind": "enum",
+      "values": [
+        "pdf",
+        "doc",
+        "video",
+        "url"
+      ],
+      "order": 1,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "te6gtdniltye276akpabxmwjj",
+      "schema": "public",
+      "name": "machine_status",
+      "kind": "enum",
+      "values": [
+        "active",
+        "maintenance",
+        "offline",
+        "decommissioned"
+      ],
+      "order": 2,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "l0ko2lz6jsu66fy21m9zfuibl",
+      "schema": "public",
+      "name": "maintenance_status",
+      "kind": "enum",
+      "values": [
+        "scheduled",
+        "due",
+        "in_progress",
+        "completed",
+        "cancelled"
+      ],
+      "order": 3,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "8p006w4xvk9p0vfhf5xew71s3",
+      "schema": "public",
+      "name": "notification_channel",
+      "kind": "enum",
+      "values": [
+        "email",
+        "sms",
+        "webhook"
+      ],
+      "order": 4,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "y0vbgwd3rpf6o06n19wzvj7dr",
+      "schema": "public",
+      "name": "permission_action",
+      "kind": "enum",
+      "values": [
+        "list",
+        "create",
+        "edit",
+        "show",
+        "clone"
+      ],
+      "order": 5,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "gxvzy46fx2etye229euc55x5i",
+      "schema": "public",
+      "name": "permission_resource",
+      "kind": "enum",
+      "values": [
+        "company",
+        "user",
+        "docuement",
+        "machine",
+        "plant",
+        "line",
+        "tenant",
+        "training",
+        "maintenance"
+      ],
+      "order": 6,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "2nsg34ec66anlqgj0dmv85g1c",
+      "schema": "public",
+      "name": "subscription_type",
+      "kind": "enum",
+      "values": [
+        "basic_monthly",
+        "basic_annual",
+        "full_monthly",
+        "full_annual"
+      ],
+      "order": 7,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "dgcmh5gjtaiqa7irswau9h4ac",
+      "schema": "public",
+      "name": "tenant_status",
+      "kind": "enum",
+      "values": [
+        "active",
+        "disactive",
+        "pending"
+      ],
+      "order": 8,
+      "diagramId": "jj8z3o4i9aep"
+    },
+    {
+      "id": "czrepgbqrvjxpezi7wyv6w781",
+      "schema": "public",
+      "name": "user_status",
+      "kind": "enum",
+      "values": [
+        "active",
+        "inactive",
+        "pending",
+        "temp_locked"
+      ],
+      "order": 9,
+      "diagramId": "jj8z3o4i9aep"
+    }
+  ],
+  "notes": [],
+  "createdAt": "2025-12-01T17:55:39.913Z",
+  "updatedAt": "2025-12-02T09:24:00.725Z"
+}
