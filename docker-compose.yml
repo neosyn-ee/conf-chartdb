@@ -2,7 +2,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.preprod
       args:
         VITE_OPENAI_API_KEY: ${VITE_OPENAI_API_KEY}
         VITE_OPENAI_API_ENDPOINT: ${VITE_OPENAI_API_ENDPOINT}
